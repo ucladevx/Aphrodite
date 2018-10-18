@@ -1,0 +1,24 @@
+.registration-form {
+    width: 100%;
+    height: 100%;
+
+    display:flex;
+   
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+.registration-button {
+    text-align: center;
+    height: 100%;
+    width: 40%;
+    min-width: 300px;
+
+    display: block;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center; 
+}
