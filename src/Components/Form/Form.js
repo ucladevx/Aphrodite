@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import './Form.css';
 
+// https://reactjs.org/docs/forms.html based on this tutorial
+// TO DO:
+// make name, major (?) required input fields
+// add start term -- drop down menu?
+
+
 
 class Form extends Component {
   constructor(props) {
+   
     super(props);
-    // console.log("constructor called");
+
     this.state = {
       name: '',
-      major: ''
-  };
+      major: '',
+      startTerm: ''
+    };
 
-    // console.log("initial state: " + this.state.name + ", " + this.state.major)
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -22,17 +29,18 @@ class Form extends Component {
     const value = target.value;
     const name = target.name; 
 
-    this.setState( {
+    this.setState({
       [name]: value // updates the state key corresponding to the given input field
     });
 
     console.log("state of name: " + this.state.name)
+    console.log("state of start term: " + this.state.startTerm)
     console.log("state of major: " + this.state.major)
 
     }
   
   handleSubmit(event) {
-    alert('name: ' + this.state.name + ', major: ' + this.state.major);
+    alert('name: ' + this.state.name + ', major: ' + this.state.major + ", " + this.state.startTerm);
 
     event.preventDefault();
   }
@@ -40,33 +48,49 @@ class Form extends Component {
 
   render() {
     return (
-      <div className = "registration-form">
+      <div className = "registration">
 
         <h3> Registration </h3>
 
-        <form onSubmit = {this.handleSubmit}>
-
+        <div> 
           <label>
-            Name: 
-            <input name = "name" value = {this.state.name} type = "text" onChange = {this.handleInputChange}/>
+            Name 
+            <input 
+            name = "name" 
+            type = "text" 
+            value = {this.state.name} 
+            onChange = {this.handleInputChange}
+            />
           </label>
-
+        </div>
+        <div> 
           <label>
-            Major: 
-            <input name = "major" value = {this.state.major} type = "text" onChange = {this.handleInputChange}/>  
+            Major 
+            <input 
+            name = "major" 
+            type = "text" 
+            value = {this.state.major} 
+            onChange = {this.handleInputChange}
+            />  
           </label>
-
-
-            <input type = "submit" value = "submit"/>
-
-        </form>
-
-
-        <button className = "registration-button" type = "submit" label = "submit" > Submit </button>
-
-
-
-
+        </div>
+        <div> 
+          <label>
+            Start Term 
+            <input 
+            name = "startTerm" 
+            type = "text" 
+            value = {this.state.startTerm} 
+            onChange = {this.handleInputChange}
+            />  
+          </label>
+        </div>
+        <div>
+          <input hidden type = "submit" />
+          <button type = "submit" onClick = {this.handleSubmit}>
+          Register
+          </button>
+        </div>
 
       </div>
 
