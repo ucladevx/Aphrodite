@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './Form.css';
 
-// https://reactjs.org/docs/forms.html based on this tutorial
 // TO DO:
 // make name, major (?) required input fields
-// add start term -- drop down menu?
+// change start term to be two drop down menus (Fall, Winter, Spring and the year)
 
 
 
