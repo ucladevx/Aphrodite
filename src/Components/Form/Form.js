@@ -40,7 +40,7 @@ class Form extends Component {
     }
   
   handleSubmit(event) {
-    alert('name: ' + this.state.name + ', major: ' + this.state.major + ", " + this.state.startTerm);
+    alert('name: ' + this.state.name + ', major: ' + this.state.major + ", start term: " + this.state.startTerm);
 
     event.preventDefault();
   }
@@ -50,12 +50,13 @@ class Form extends Component {
     return (
       <div className = "registration">
 
-        <h3> Registration </h3>
+        <h3 className = "registration-title"> Registration </h3>
 
-        <div> 
+        <div > 
           <label>
             Name 
             <input 
+            className = "registration-input"
             name = "name" 
             type = "text" 
             value = {this.state.name} 
@@ -67,6 +68,7 @@ class Form extends Component {
           <label>
             Major 
             <input 
+            className = "registration-input"
             name = "major" 
             type = "text" 
             value = {this.state.major} 
@@ -78,6 +80,7 @@ class Form extends Component {
           <label>
             Start Term 
             <input 
+            className = "registration-input"
             name = "startTerm" 
             type = "text" 
             value = {this.state.startTerm} 
@@ -87,7 +90,10 @@ class Form extends Component {
         </div>
         <div>
           <input hidden type = "submit" />
-          <button type = "submit" onClick = {this.handleSubmit}>
+          <button 
+          className = "registration-button" 
+          type = "submit" 
+          onClick = {this.handleSubmit}>
           Register
           </button>
         </div>
