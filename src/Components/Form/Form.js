@@ -50,11 +50,11 @@ class Form extends Component {
         <label>
           {formTitle}
           <input 
-          className = "registration-input"
-          name = {formTitle}
-          type = "text" 
-          value = {this.state[formTitle]} 
-          onChange = {this.handleInputChange}
+            className = "registration-input"
+            name = {formTitle}
+            type = "text"
+            value = {this.state[{formTitle}]} 
+            onChange = {this.handleInputChange}
           />
         </label>
       </div>
@@ -64,33 +64,10 @@ class Form extends Component {
   render() {
     return (
       <div className = "registration">
-
         <h3 className = "registration-title"> Registration </h3>
-        {this.createForm("Name")}
-        <div> 
-          <label>
-            Major 
-            <input 
-            className = "registration-input"
-            name = "major" 
-            type = "text" 
-            value = {this.state.major} 
-            onChange = {this.handleInputChange}
-            />  
-          </label>
-        </div>
-        <div> 
-          <label>
-            Start Term 
-            <input 
-            className = "registration-input"
-            name = "startTerm" 
-            type = "text" 
-            value = {this.state.startTerm} 
-            onChange = {this.handleInputChange}
-            />  
-          </label>
-        </div>
+        {this.createForm("name")}
+        {this.createForm("major")}
+        {this.createForm("startTerm")}
         <div>
           <input hidden type = "submit" />
           <button 
@@ -100,7 +77,6 @@ class Form extends Component {
           Register
           </button>
         </div>
-
       </div>
 
     );

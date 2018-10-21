@@ -7,12 +7,13 @@ import {
 import './App.css';
 import LoginBox from './Components/LoginBox/LoginBox';
 import Form from './Components/Form/Form';
-
+import LandingPage from './Pages/LandingPage/LandingPage';
 class App extends Component {
   render() {
     return (
       <Router>
         <Switch>
+          <Route exact path="/" component={LandingPage}/>
           <Route exact path="/loginbox" component={LoginBox}/>
           <Route exact path="/form" component={Form}/>
         </Switch>
