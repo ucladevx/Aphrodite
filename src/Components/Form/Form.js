@@ -44,25 +44,29 @@ class Form extends Component {
     event.preventDefault();
   }
   
+  createForm(formTitle) {
+    return(
+      <div > 
+        <label>
+          {formTitle}
+          <input 
+          className = "registration-input"
+          name = {formTitle}
+          type = "text" 
+          value = {this.state[formTitle]} 
+          onChange = {this.handleInputChange}
+          />
+        </label>
+      </div>
+    );
+  }
 
   render() {
     return (
       <div className = "registration">
 
         <h3 className = "registration-title"> Registration </h3>
-
-        <div > 
-          <label>
-            Name 
-            <input 
-            className = "registration-input"
-            name = "name" 
-            type = "text" 
-            value = {this.state.name} 
-            onChange = {this.handleInputChange}
-            />
-          </label>
-        </div>
+        {this.createForm("Name")}
         <div> 
           <label>
             Major 
