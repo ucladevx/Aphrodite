@@ -1,12 +1,9 @@
 .landing-wrapper {
   width: 100vw;
   height: 100vh;
-  display: grid;
-  grid-template-rows: 75px auto;
-  grid-template-columns: 1.5fr 1fr;
-  grid-template-areas: 
-    "header header"
-    "leftside rightside"
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .leftside {
