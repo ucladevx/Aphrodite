@@ -3,6 +3,7 @@ import "./ClassCard.css";
 
 class ClassCard extends Component {
   state = {
+    // GET post to back end
     classCategory: "Computer Science",
     classNumber: "M146",
     className: "Introduction to Machine Learning",
@@ -22,9 +23,18 @@ class ClassCard extends Component {
     console.log("card clicked");
     this.setState({
       cardOpen: true
-      // this should eventually toggle back and forth
+      // this should eventually toggle back and forth, to change card display
     });
   };
+
+  createCategory(category) {
+    return (
+      <div>
+        <span className="category"> {category + ": "} </span>
+        <span className="info"> {" " + this.state[category]} </span>
+      </div>
+    );
+  }
 
   render() {
     return (
@@ -36,35 +46,12 @@ class ClassCard extends Component {
           <span className="class-title">{" " + this.state.className}</span>
         </div>
 
-        <div>
-          <span className="class-info"> Units: </span>
-          <span className="info"> {" " + this.state.units} </span>
-        </div>
-
-        <div>
-          <span className="class-info">Grade Type:</span>
-          <span className="info"> {" " + this.state.gradeType} </span>
-        </div>
-
-        <div>
-          <span className="class-info"> Class Restrictions: </span>
-          <span className="info">{" " + this.state.classRestrictions[0]}</span>
-        </div>
-
-        <div>
-          <span className="class-info"> Impacted: </span>
-          <span className="info"> {" " + this.state.impacted} </span>
-        </div>
-
-        <div>
-          <span className="class-info"> Pre-Requisites: </span>
-          <span className="info"> {" " + this.state.preRequisites[0]} </span>
-        </div>
-
-        <div>
-          <span className="class-info"> Co-Requisites: </span>
-          <span className="info"> {" " + this.state.coRequisites[0]} </span>
-        </div>
+        {this.createCategory("units")}
+        {this.createCategory("gradeType")}
+        {this.createCategory("classRestrictions")}
+        {this.createCategory("impacted")}
+        {this.createCategory("preRequisites")}
+        {this.createCategory("coRequisites")}
       </div>
     );
   }
