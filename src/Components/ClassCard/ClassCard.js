@@ -3,6 +3,7 @@ import "./ClassCard.css";
 
 class ClassCard extends Component {
   state = {
+    classCategory: "Computer Science",
     classNumber: "M146",
     className: "Introduction to Machine Learning",
     units: "4.0",
@@ -28,25 +29,42 @@ class ClassCard extends Component {
   render() {
     return (
       <div className="class-card" onClick={() => this.cardOpenHandler()}>
-        <h1>
-          {" "}
-          {this.state.classNumber} - {this.state.className}{" "}
-        </h1>
-        <p className="class-info"> Units: {this.state.units} </p>
-        <p className="class-info"> Grade Type: {this.state.gradeType} </p>
-        <p className="class-info">
-          {" "}
-          Class Restrictions: {this.state.classRestrictions[0]}{" "}
-        </p>
-        <p className="class-info"> Impacted: {this.state.impacted} </p>
-        <p className="class-info">
-          {" "}
-          Pre-Requisites: {this.state.preRequisites[0]}{" "}
-        </p>
-        <p className="class-info">
-          {" "}
-          Co-Requisites: {this.state.coRequisites[0]}{" "}
-        </p>
+        <div>
+          <span className="class-number" style={{ display: "inline" }}>
+            {this.state.classNumber} -
+          </span>
+          <span className="class-title">{" " + this.state.className}</span>
+        </div>
+
+        <div>
+          <span className="class-info"> Units: </span>
+          <span className="info"> {" " + this.state.units} </span>
+        </div>
+
+        <div>
+          <span className="class-info">Grade Type:</span>
+          <span className="info"> {" " + this.state.gradeType} </span>
+        </div>
+
+        <div>
+          <span className="class-info"> Class Restrictions: </span>
+          <span className="info">{" " + this.state.classRestrictions[0]}</span>
+        </div>
+
+        <div>
+          <span className="class-info"> Impacted: </span>
+          <span className="info"> {" " + this.state.impacted} </span>
+        </div>
+
+        <div>
+          <span className="class-info"> Pre-Requisites: </span>
+          <span className="info"> {" " + this.state.preRequisites[0]} </span>
+        </div>
+
+        <div>
+          <span className="class-info"> Co-Requisites: </span>
+          <span className="info"> {" " + this.state.coRequisites[0]} </span>
+        </div>
       </div>
     );
   }

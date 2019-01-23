@@ -1,17 +1,43 @@
 .class-card {
-  border: 1px purple solid;
-  color: white;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  width: 275px;
+  width: 305px;
+  height: 235px;
+  left: 25px;
+  top: 147px;
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 5px;
+  padding-top: 12px;
   margin: 25px;
-  border-radius: 25px;
-  background-color: rgba(184, 104, 181, 0.76);
+  border-radius: 20px;
+  /* color should eventually be dependent on classCategory - link style to state */
+  background-color: #b875d7;
+}
+
+.class-number {
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.class-title {
+  color: white;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 16px;
 }
 
 .class-info {
+  font-family: sans-serif;
+  /* display: inline; */
   font-weight: bold;
+  font-size: 10px;
   color: white;
+}
+
+.info {
+  color: white;
+  font-family: sans-serif;
+  font-weight: lighter;
+  font-size: 12px;
 }
