@@ -26,14 +26,19 @@ class ClassCard extends Component {
     });
   };
 
-  createCategory(category, property) {
+  createCategory = (category, property) => {
     return (
       <div>
         <span className="category"> {category + ": "} </span>
         <span className="property"> {" " + this.state[property]} </span>
       </div>
     );
-  }
+  };
+
+  // what are these classes/ where do they come from?
+  createClassBlob = className => {
+    return <div className="class-blob">{className}</div>;
+  };
 
   render() {
     return (
@@ -45,10 +50,16 @@ class ClassCard extends Component {
           <span className="class-title">{" " + this.state.className}</span>
         </div>
 
+        {this.createClassBlob("CS 33")}
+        {this.createClassBlob("STATS")}
+        {this.createClassBlob("COM SCI M151A")}
+
+        <p> {"\n"} </p>
         {this.createCategory("Units", "units")}
         {this.createCategory("Grade Type", "gradeType")}
         {this.createCategory("Class Restrictions", "classRestrictions")}
         {this.createCategory("Impacted", "impacted")}
+        <p> {"\n"} </p>
         {this.createCategory("Pre-Requisites", "preRequisites")}
         {this.createCategory("Co-Requisites", "coRequisites")}
       </div>
