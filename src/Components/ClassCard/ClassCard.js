@@ -4,7 +4,7 @@ import Collapsible from "react-collapsible";
 
 class ClassCard extends Component {
   state = {
-    // GET post to back end
+    // GET call to back end
     classCategory: "Computer Science",
     classNumber: "M146",
     className: "Introduction to Machine Learning",
@@ -16,18 +16,18 @@ class ClassCard extends Component {
     preRequisites: ["Civil and Environmental Engineering"],
     coRequisites: ["None"],
 
-    cardOpen: false
+    cardClosed: true
   };
 
   cardOpenHandler = () => {
     console.log("card clicked");
-    this.setState({
-      cardOpen: true
-      // this should eventually toggle back and forth, to change card display
-    });
+    this.setState(prevState => ({
+      cardClosed: !prevState.cardClosed
+    }));
+    console.log("new state of cardClosed: " + this.state.cardClosed);
   };
 
-  // what are these classes/ where do they come from?
+  // what are these classes/ where do they come from? Back end call
   createClassBlob = className => {
     return <div className="class-blob">{className}</div>;
   };
@@ -61,8 +61,12 @@ class ClassCard extends Component {
 
   render() {
     return (
-      <div className="class-card" onClick={() => this.cardOpenHandler()}>
-        <Collapsible trigger={this.createClosedCard()}>
+      <div className="class-card">
+        <Collapsible
+          trigger={this.createClosedCard()}
+          onOpen={() => this.cardOpenHandler()}
+          onClose={() => this.cardOpenHandler()}
+        >
           {this.createCategory("Units", "units")}
           {this.createCategory("Grade Type", "gradeType")}
           {this.createCategory("Class Restrictions", "classRestrictions")}
@@ -70,6 +74,7 @@ class ClassCard extends Component {
           <p> {"\n"} </p>
           {this.createCategory("Pre-Requisites", "preRequisites")}
           {this.createCategory("Co-Requisites", "coRequisites")}
+          <p> {"\n"} </p>
         </Collapsible>
       </div>
     );
