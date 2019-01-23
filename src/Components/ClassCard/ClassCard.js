@@ -12,7 +12,6 @@ class ClassCard extends Component {
     classRestrictions: ["Ug Engr", "Bioinfo Minor"],
     impacted: "No",
     level: "Upper Division",
-    // add a loop through lists in JSX
     preRequisites: ["Civil and Environmental Engineering"],
     coRequisites: ["None"],
 
@@ -27,11 +26,11 @@ class ClassCard extends Component {
     });
   };
 
-  createCategory(category) {
+  createCategory(category, property) {
     return (
       <div>
         <span className="category"> {category + ": "} </span>
-        <span className="info"> {" " + this.state[category]} </span>
+        <span className="property"> {" " + this.state[property]} </span>
       </div>
     );
   }
@@ -46,12 +45,12 @@ class ClassCard extends Component {
           <span className="class-title">{" " + this.state.className}</span>
         </div>
 
-        {this.createCategory("units")}
-        {this.createCategory("gradeType")}
-        {this.createCategory("classRestrictions")}
-        {this.createCategory("impacted")}
-        {this.createCategory("preRequisites")}
-        {this.createCategory("coRequisites")}
+        {this.createCategory("Units", "units")}
+        {this.createCategory("Grade Type", "gradeType")}
+        {this.createCategory("Class Restrictions", "classRestrictions")}
+        {this.createCategory("Impacted", "impacted")}
+        {this.createCategory("Pre-Requisites", "preRequisites")}
+        {this.createCategory("Co-Requisites", "coRequisites")}
       </div>
     );
   }
