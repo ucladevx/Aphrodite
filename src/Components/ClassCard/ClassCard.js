@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./ClassCard.css";
+import Collapsible from "react-collapsible";
 
 class ClassCard extends Component {
   state = {
@@ -26,6 +27,11 @@ class ClassCard extends Component {
     });
   };
 
+  // what are these classes/ where do they come from?
+  createClassBlob = className => {
+    return <div className="class-blob">{className}</div>;
+  };
+
   createCategory = (category, property) => {
     return (
       <div>
@@ -35,14 +41,9 @@ class ClassCard extends Component {
     );
   };
 
-  // what are these classes/ where do they come from?
-  createClassBlob = className => {
-    return <div className="class-blob">{className}</div>;
-  };
-
-  render() {
+  createClosedCard = () => {
     return (
-      <div className="class-card" onClick={() => this.cardOpenHandler()}>
+      <div>
         <div>
           <span className="class-number" style={{ display: "inline" }}>
             {this.state.classNumber} -
@@ -53,15 +54,23 @@ class ClassCard extends Component {
         {this.createClassBlob("CS 33")}
         {this.createClassBlob("STATS")}
         {this.createClassBlob("COM SCI M151A")}
+        <p> {"\n"} </p>
+      </div>
+    );
+  };
 
-        <p> {"\n"} </p>
-        {this.createCategory("Units", "units")}
-        {this.createCategory("Grade Type", "gradeType")}
-        {this.createCategory("Class Restrictions", "classRestrictions")}
-        {this.createCategory("Impacted", "impacted")}
-        <p> {"\n"} </p>
-        {this.createCategory("Pre-Requisites", "preRequisites")}
-        {this.createCategory("Co-Requisites", "coRequisites")}
+  render() {
+    return (
+      <div className="class-card" onClick={() => this.cardOpenHandler()}>
+        <Collapsible trigger={this.createClosedCard()}>
+          {this.createCategory("Units", "units")}
+          {this.createCategory("Grade Type", "gradeType")}
+          {this.createCategory("Class Restrictions", "classRestrictions")}
+          {this.createCategory("Impacted", "impacted")}
+          <p> {"\n"} </p>
+          {this.createCategory("Pre-Requisites", "preRequisites")}
+          {this.createCategory("Co-Requisites", "coRequisites")}
+        </Collapsible>
       </div>
     );
   }
