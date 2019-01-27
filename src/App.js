@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import LoginBox from "./Components/LoginBox/LoginBox";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import FormPage from "./Components/Form/Form";
 import MainPage from "./Pages/MainPage/MainPage";
 import classCard from "./Components/ClassCard/ClassCard";
+import { connect } from "react-redux";
 
 class App extends Component {
   render() {
@@ -22,4 +22,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
