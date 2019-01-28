@@ -19,7 +19,6 @@ class ClassCard extends Component {
     cardClosed: true
   };
 
-  // is this needed for anything ?
   cardOpenHandler = () => {
     console.log("card clicked");
     this.setState(prevState => ({
