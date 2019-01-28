@@ -1,0 +1,28 @@
+.search-column {
+  border: 1px black solid;
+}
+
+.search-box {
+  /*height: 96px;*/
+  background: hsl(0, 0%, 76%);
+  padding-bottom: 16px;
+  padding-top: 20px;
+}
+
+.search-bar {
+  width: 305px;
+  height: 35px;
+  left: 25px;
+  top: 31px;
+  margin: 25px;
+  padding-left: 16px;
+
+  background: #ffffff;
+  border-radius: 20px;
+  border: white;
+}
+
+.options {
+  font-size: 14px;
+  padding-left: 41px;
+}
