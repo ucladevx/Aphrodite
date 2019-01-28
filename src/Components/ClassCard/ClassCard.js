@@ -4,18 +4,6 @@ import Collapsible from "react-collapsible";
 
 class ClassCard extends Component {
   state = {
-    // GET call to back end
-    classCategory: "Computer Science",
-    classNumber: "M146",
-    className: "Introduction to Machine Learning",
-    units: "4.0",
-    gradeType: "Letter Grade",
-    classRestrictions: ["Ug Engr", "Bioinfo Minor"],
-    impacted: "No",
-    level: "Upper Division",
-    preRequisites: ["Civil and Environmental Engineering"],
-    coRequisites: ["None"],
-
     cardClosed: true
   };
 
@@ -36,7 +24,7 @@ class ClassCard extends Component {
     return (
       <div>
         <span className="category"> {category + ": "} </span>
-        <span className="property"> {" " + this.state[property]} </span>
+        <span className="property"> {" " + this.props[property]} </span>
       </div>
     );
   };
@@ -46,9 +34,9 @@ class ClassCard extends Component {
       <div>
         <div>
           <span className="class-number" style={{ display: "inline" }}>
-            {this.state.classNumber} -
+            {this.props.classNumber} -
           </span>
-          <span className="class-title">{" " + this.state.className}</span>
+          <span className="class-title">{" " + this.props.className}</span>
         </div>
 
         {this.createClassBlob("CS 33")}
@@ -82,3 +70,18 @@ class ClassCard extends Component {
 }
 
 export default ClassCard;
+
+/*
+        <ClassCard 
+          classCategory = "Computer Science"
+          classNumber = "M146"
+          className = "Introduction to Machine Learning"
+          units = "4.0"
+          gradeType = "Letter Grade"
+          classRestrictions = {["Ug Engr", "Bioinfo Minor"]}
+          impacted = "No"
+          level = "Upper Division"
+          preRequisites = {["Civil and Environmental Engineering"]}
+          coRequisites = {["None"]}
+        />
+*/
