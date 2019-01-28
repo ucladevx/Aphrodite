@@ -26,3 +26,19 @@
   font-size: 14px;
   padding-left: 41px;
 }
+
+.search-subcategory {
+  width: 305px;
+  left: 25px;
+  top: 31px;
+  margin: 25px;
+
+  padding-left: 16px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+
+  background: #ededed;
+  border-radius: 20px;
+  border: #ededed;
+  font-size: 14px;
+}

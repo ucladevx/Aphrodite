@@ -2,19 +2,60 @@ import React, { Component } from "react";
 import ClassCard from "../ClassCard/ClassCard";
 import "./SearchBar.css";
 import Collapsible from "react-collapsible";
+// https://www.npmjs.com/package/react-collapsible
+import ReactSearchBox from "react-search-box";
+// https://github.com/ghoshnirmalya/react-search-box
+
+// can i override the styles of imported components
 
 class SearchBar extends Component {
+  // array of objects holding all searchable classes
+  classData = [
+    {
+      key: "CS 33",
+      value: "Computer Science 33"
+    },
+    {
+      key: "CS M152A",
+      value: "Computer Science M152A"
+    }
+  ];
+
+  // the tag that triggers the collapsible feature
   moreOptions = () => {
-    return <span className="options"> more options </span>;
+    return <div className="options"> more options </div>;
+  };
+
+  createSubcategory = subcategory => {
+    return <div> {subcategory} </div>;
   };
 
   render() {
     return (
       <div className="search-column">
         <div className="search-box">
+          <ReactSearchBox
+            style={{ width: "30px" }}
+            placeholder="Search"
+            value="Doe"
+            data={this.classData}
+            callback={record => console.log(record)}
+          />
+
           <input className="search-bar" type="text" name="Search" />
+
           <Collapsible trigger={this.moreOptions()}>
-            <div> I am collapsible!! </div>
+            <div className="search-subcategory">
+              <Collapsible trigger={this.createSubcategory("Class")}>
+                Class Details
+              </Collapsible>
+            </div>
+
+            <div className="search-subcategory">
+              <Collapsible trigger={this.createSubcategory("Department")}>
+                Department Details
+              </Collapsible>
+            </div>
           </Collapsible>
         </div>
 

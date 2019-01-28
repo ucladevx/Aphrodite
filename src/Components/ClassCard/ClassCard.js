@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./ClassCard.css";
 import Collapsible from "react-collapsible";
+// https://www.npmjs.com/package/react-collapsible
 
 class ClassCard extends Component {
   state = {
