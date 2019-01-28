@@ -14,7 +14,7 @@ class SearchBar extends Component {
         <div className="search-box">
           <input className="search-bar" type="text" name="Search" />
           <Collapsible trigger={this.moreOptions()}>
-            <div> I'm collapsible!! </div>
+            <div> I am collapsible!! </div>
           </Collapsible>
         </div>
 
