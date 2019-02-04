@@ -5,9 +5,6 @@ import Collapsible from "react-collapsible";
 // https://www.npmjs.com/package/react-collapsible
 import ReactSearchBox from "react-search-box";
 // https://github.com/ghoshnirmalya/react-search-box
-import styled from "styled-components";
-
-// can i override the styles of imported components
 
 class SearchBar extends Component {
   // array of objects holding all searchable classes
