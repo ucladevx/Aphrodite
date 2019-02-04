@@ -4,9 +4,21 @@ import SearchBar from "../../Components/SearchBar/SearchBar";
 class LandingPage extends Component {
   state = {
     classes: [
-      ["CS 111", "CS 131", "CS 33"],
-      ["CS 118", "CS 180", "CS M51A", "CS M117"],
-      ["CS 31", "CS 32"]
+      [
+        { name: "CS 111" },
+        { name: "CS 131" }, 
+        { name: "CS 33" }
+      ],
+      [
+        { name: "CS 118" }, 
+        { name: "CS 180" }, 
+        { name: "CS M51A" },
+        { name: "CS M117" }
+      ],
+      [
+        { name: "CS 31" },
+        { name: "CS 32" }
+      ]
     ]
   }
   render() {
@@ -16,9 +28,10 @@ class LandingPage extends Component {
           <SearchBar />
         </div>
         <div style={{ height: "100vh", width: "50vw" }}>
-          <QuarterList quarter={this.state.classes[0]}/>
-          <QuarterList quarter={this.state.classes[1]}/>
-          <QuarterList quarter={this.state.classes[2]}/>
+        {this.state.classes.map(q => {
+            return <QuarterList 
+              quarter={q}/>
+          })}
         </div>
       </div>
     );

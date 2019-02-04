@@ -3,7 +3,7 @@ import ClassBubble from "../ClassBubble/ClassBubble";
 
 class QuarterList extends Component {
   createClassBubble = (classBubble) => {
-    return <ClassBubble name={classBubble}/>;
+    return <ClassBubble name={classBubble.name}/>;
   }
   createClassBubbles = (quarter) => {
     return quarter.map(this.createClassBubble);
