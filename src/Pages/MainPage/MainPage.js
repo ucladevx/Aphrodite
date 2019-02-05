@@ -5,19 +5,19 @@ class LandingPage extends Component {
   state = {
     classes: [
       [
-        { name: "CS 111" },
-        { name: "CS 131" }, 
-        { name: "CS 33" }
+        { name: "COM SCI 111" },
+        { name: "COM SCI 131" }, 
+        { name: "COM SCI 33" }
       ],
       [
-        { name: "CS 118" }, 
-        { name: "CS 180" }, 
-        { name: "CS M51A" },
-        { name: "CS M117" }
+        { name: "COM SCI 118" }, 
+        { name: "COM SCI 180" }, 
+        { name: "COM SCI M51A" },
+        { name: "COM SCI M117" }
       ],
       [
-        { name: "CS 31" },
-        { name: "CS 32" }
+        { name: "COM SCI 31" },
+        { name: "COM SCI 32" }
       ]
     ]
   }
@@ -27,7 +27,7 @@ class LandingPage extends Component {
         <div style={{ height: "100vh", width: "50vw" }}>
           <SearchBar />
         </div>
-        <div style={{ height: "100vh", width: "50vw" }}>
+        <div style={{ top: 1000, height: "100vh", width: "50vw" }}>
         {this.state.classes.map(q => {
             return <QuarterList 
               quarter={q}/>
