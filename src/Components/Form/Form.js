@@ -47,7 +47,7 @@ class Form extends Component {
 
   createForm(formTitle) {
     return (
-      <div className="single-form">
+      <div className="form-field">
         <input
           className="input"
           name={formTitle}
