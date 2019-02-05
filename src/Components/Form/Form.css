@@ -18,17 +18,18 @@
   border-bottom: 2px solid black;
 }
 
-/*
-.input::placeholder {
-  color: black;
+input:focus {
+  outline: none;
 }
-*/
 
 input::-webkit-input-placeholder {
   color: black;
+  font-weight: lighter;
 }
 input:focus::-webkit-input-placeholder {
-  color: red;
+  transition: 0.2s ease all;
+  font-size: 11px;
+  opacity: 1;
 }
 
 .registration-button {
