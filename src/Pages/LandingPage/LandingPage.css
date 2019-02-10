@@ -1,0 +1,21 @@
+.landing-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftside {
+  grid-area: leftside;
+  display: flex;
+  border: 1px green solid;
+}
+
+.rightside {
+  grid-area: rightside;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px red solid;
+}

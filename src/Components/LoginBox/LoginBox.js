@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class LoginBox extends Component {
   render() {
-    return (
-      <p>This is a login box :)</p>
-    );
+    return <p style={{ border: "1px green solid" }}>This is a login box :)</p>;
   }
 }
 
