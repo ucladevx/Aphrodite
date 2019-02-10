@@ -4,40 +4,11 @@
   height: 600px;
   padding: 50px;
   box-sizing: border-box;
-
   padding-top: 100px;
-
   /* border: 1px solid rgba(0, 0, 0, 0.15); */
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.form-field {
-  padding-bottom: 50px;
-}
-
-.input {
-  width: 490px;
-  height: 50px;
-  font-family: sans-serif;
-  font-size: 16px;
-  color: black;
-  border: none;
-  border-bottom: 2px solid black;
-}
-
-input:focus {
-  outline: none;
-}
-
-input::-webkit-input-placeholder {
-  color: black;
-  font-weight: lighter;
-}
-input:focus::-webkit-input-placeholder {
-  transition: 0.2s ease all;
-  font-size: 11px;
 }
 
 .registration-button {
@@ -59,4 +30,36 @@ input:focus::-webkit-input-placeholder {
   color: white;
   box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-control {
+  width: 490px;
+  height: 50px;
+  font-family: sans-serif;
+  font-size: 16px;
+  color: black;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-control-placeholder {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  padding: 7px 0 0 13px;
+  transition: all 200ms;
+  opacity: 0.5;
+}
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+  font-size: 75%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
 }

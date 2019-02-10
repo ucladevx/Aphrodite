@@ -35,11 +35,11 @@ class Form extends Component {
   handleSubmit(event) {
     alert(
       "name: " +
-      this.state.name +
-      ", major: " +
-      this.state.major +
-      ", start term: " +
-      this.state.year
+        this.state.name +
+        ", major: " +
+        this.state.major +
+        ", start term: " +
+        this.state.year
     );
 
     event.preventDefault();
@@ -47,7 +47,23 @@ class Form extends Component {
 
   createForm(formTitle) {
     return (
-      <div className="form-field">
+      <div className="form-group">
+        <input
+          type="text"
+          id={formTitle}
+          className="form-control"
+          required
+          value={this.state[{ formTitle }]}
+          onChange={this.handleInputChange}
+        />
+        <label className="form-control-placeholder" htmlFor={formTitle}>
+          {formTitle}
+        </label>
+      </div>
+    );
+  }
+  /*
+<div className="form-field">
         <input
           className="input"
           name={formTitle}
@@ -57,9 +73,7 @@ class Form extends Component {
           onChange={this.handleInputChange}
         />
       </div>
-    );
-  }
-
+*/
   render() {
     return (
       <div>
