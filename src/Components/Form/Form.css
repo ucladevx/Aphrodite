@@ -38,11 +38,9 @@ input::-webkit-input-placeholder {
 input:focus::-webkit-input-placeholder {
   transition: 0.2s ease all;
   font-size: 11px;
-  opacity: 1;
 }
 
 .registration-button {
-<<<<<<< HEAD
   background-color: black;
   border: none;
   color: white;
@@ -55,20 +53,6 @@ input:focus::-webkit-input-placeholder {
   display: inline-block;
   font-size: 20px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-=======
-    background-color: #6ebbe7dc;
-    padding-top: 100px;
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    border-radius: 12px;
-    width: 350px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
->>>>>>> master
 }
 
 .registration-button:hover {
