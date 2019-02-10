@@ -35,11 +35,11 @@ class Form extends Component {
   handleSubmit(event) {
     alert(
       "name: " +
-        this.state.name +
-        ", major: " +
-        this.state.major +
-        ", start term: " +
-        this.state.year
+      this.state.name +
+      ", major: " +
+      this.state.major +
+      ", start term: " +
+      this.state.year
     );
 
     event.preventDefault();
@@ -53,6 +53,7 @@ class Form extends Component {
           id={formTitle}
           className="form-control"
           required
+          name={formTitle}
           value={this.state[{ formTitle }]}
           onChange={this.handleInputChange}
         />
