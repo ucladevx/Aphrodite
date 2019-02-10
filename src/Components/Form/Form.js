@@ -4,7 +4,6 @@ import "./Form.css";
 // TO DO:
 // make name, major (?) required input fields
 // change start term to be two drop down menus (Fall, Winter, Spring and the year)
-
 class Form extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +11,7 @@ class Form extends Component {
     this.state = {
       name: "",
       major: "",
-      startTerm: ""
+      year: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -29,18 +28,18 @@ class Form extends Component {
     });
 
     console.log("state of name: " + this.state.name);
-    console.log("state of start term: " + this.state.startTerm);
+    console.log("state of start term: " + this.state.year);
     console.log("state of major: " + this.state.major);
   }
 
   handleSubmit(event) {
     alert(
       "name: " +
-        this.state.name +
-        ", major: " +
-        this.state.major +
-        ", start term: " +
-        this.state.startTerm
+      this.state.name +
+      ", major: " +
+      this.state.major +
+      ", start term: " +
+      this.state.year
     );
 
     event.preventDefault();
@@ -48,29 +47,27 @@ class Form extends Component {
 
   createForm(formTitle) {
     return (
-      <div>
-        <label>
-          {formTitle}
-          <input
-            className="registration-input"
-            name={formTitle}
-            type="text"
-            value={this.state[{ formTitle }]}
-            onChange={this.handleInputChange}
-          />
-        </label>
+      <div className="form-field">
+        <input
+          className="input"
+          name={formTitle}
+          placeholder={formTitle}
+          type="text"
+          value={this.state[{ formTitle }]}
+          onChange={this.handleInputChange}
+        />
       </div>
     );
   }
 
   render() {
     return (
-      <div className="registration">
-        <h3 className="registration-title"> Registration </h3>
-        {this.createForm("name")}
-        {this.createForm("major")}
-        {this.createForm("startTerm")}
-        <div>
+      <div>
+        <div className="registration-form">
+          {this.createForm("name")}
+          {this.createForm("major")}
+          {this.createForm("year")}
+
           <input hidden type="submit" />
           <button
             className="registration-button"
