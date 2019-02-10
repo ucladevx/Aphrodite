@@ -9,7 +9,8 @@ class QuarterList extends Component {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          border: "1px red solid"
+          borderBottom: "1px solid black",
+          padding: 10
         }}
       >
         {this.props.quarter.map(q =>
