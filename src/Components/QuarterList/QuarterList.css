@@ -1,0 +1,12 @@
+.quarter-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.horizontal-line {
+    border: 0.5px solid black;
+    width: 80%;
+}

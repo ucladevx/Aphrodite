@@ -6,10 +6,11 @@
     "react": "^16.5.2",
     "react-beautiful-dnd": "^9.0.2",
     "react-dom": "^16.5.2",
+    "react-draggable": "^3.1.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.5",
+    "react-scripts": "^2.1.5",
     "redux": "^4.0.1",
     "redux-form": "^7.4.2"
   },
