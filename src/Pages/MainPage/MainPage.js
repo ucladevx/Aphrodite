@@ -1,33 +1,35 @@
 import React, { Component } from "react";
 import QuarterList from "../../Components/QuarterList/QuarterList";
 import SearchBar from "../../Components/SearchBar/SearchBar";
+import './MainPage.css';
 class LandingPage extends Component {
   state = {
     classes: [
       [
-        { name: "COM SCI 111" },
-        { name: "COM SCI 131" }, 
-        { name: "COM SCI 33" }
+        { dept: "COM SCI", name: "111" },
+        { dept: "COM SCI", name: "131" }, 
+        { dept: "COM SCI", name: "35L" }
       ],
       [
-        { name: "COM SCI 118" }, 
-        { name: "COM SCI 180" }, 
-        { name: "COM SCI M51A" },
-        { name: "COM SCI M117" }
+        { dept: "COM SCI", name: "118" }, 
+        { dept: "COM SCI", name: "180" }, 
+        { dept: "COM SCI", name: "M51A" },
+        { dept: "PHYSICS", name: "1C" }
       ],
       [
-        { name: "COM SCI 31" },
-        { name: "COM SCI 32" }
+        { dept: "MATH", name: "61" },
+        { dept: "MATH", name: "115A" },
+        { dept: "COM SCI", name: "M117" }
       ]
     ]
   }
   render() {
     return (
-      <div style={{ display: "flex", width: "100vw", height: "100vh" }}>
-        <div style={{ height: "100vh", width: "50vw" }}>
+      <div className='main-wrapper'>
+        <div className='search-wrapper'>
           <SearchBar />
         </div>
-        <div style={{ top: 1000, height: "100vh", width: "50vw" }}>
+        <div className='quarter-list-wrapper'>
         {this.state.classes.map(q => {
             return <QuarterList 
               quarter={q}/>
