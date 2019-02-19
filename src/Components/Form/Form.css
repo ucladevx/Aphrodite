@@ -1,66 +1,68 @@
-.registration {
-   
-    margin: auto;
-    width: 500px;
-    height: 500px;
-    padding: 50px;
-    box-sizing: border-box;
-
-    padding: 10px;
-    border-radius: 3px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    justify-content: center;
-    align-items: center; 
-    text-align: center;
-
-
+.registration-form {
+  margin: auto;
+  width: 600px;
+  height: 600px;
+  padding: 50px;
+  box-sizing: border-box;
+  padding-top: 100px;
+  /* border: 1px solid rgba(0, 0, 0, 0.15); */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-
-.registration-title {
-   font-weight: bold;
-   font-variant: small-caps;
-   justify-content: center;
-   align-items: center;
-}
-
-
-label {
-    display: inline-block;
-    width: 350px;
-    clear: left;
-    text-align: right;
-    
-}
-
-
-.registration-input {
-    width: 200px;
-    height: 100%;
-    font-family: 'Courier New', Courier, monospace;
-
-    justify-content: center;
-    align-items: center;
-
-
-}
-
 
 .registration-button {
-    background-color: #6ebbe7dc;
-    padding-top: 100px;
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    border-radius: 12px;
-    width: 350px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  width: 225px;
+  height: 58px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .registration-button:hover {
-    background-color: #3d6e8adc; /* Green */
-    color: white;
+  color: white;
+  box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.form-control {
+  width: 490px;
+  height: 50px;
+  font-family: sans-serif;
+  font-size: 16px;
+  color: black;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+  padding-top: 15px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-left: 10px;
+}
+
+.form-control-placeholder {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  padding: 7px 0 0 13px;
+  transition: all 200ms;
+  opacity: 0.5;
+}
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+  font-size: 75%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
 }
