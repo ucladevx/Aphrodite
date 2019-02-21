@@ -6,23 +6,30 @@ class LandingPage extends Component {
   state = {
     classes: [
       [
-        { dept: "COM SCI", name: "111" },
-        { dept: "COM SCI", name: "131" }, 
-        { dept: "COM SCI", name: "35L" }
+        { id: 1, dept: "COM SCI", name: "111" },
+        { id: 2, dept: "COM SCI", name: "131" }, 
+        { id: 3, dept: "COM SCI", name: "35L" }
       ],
       [
-        { dept: "COM SCI", name: "118" }, 
-        { dept: "COM SCI", name: "180" }, 
-        { dept: "COM SCI", name: "M51A" },
-        { dept: "PHYSICS", name: "1C" }
+        { id: 4, dept: "COM SCI", name: "118" }, 
+        { id: 5, dept: "COM SCI", name: "180" }, 
+        { id: 6, dept: "COM SCI", name: "M51A" },
+        { id: 7, dept: "PHYSICS", name: "1C" }
       ],
       [
-        { dept: "MATH", name: "61" },
-        { dept: "MATH", name: "115A" },
-        { dept: "COM SCI", name: "M117" }
+        { id: 8, dept: "MATH", name: "61" },
+        { id: 9, dept: "MATH", name: "115A" },
+        { id: 10, dept: "COM SCI", name: "M117" }
       ]
     ]
   }
+
+  delete_class = (index, id) => {
+    const newClasses = [...this.state.classes];
+    newClasses[index] = this.state.classes[index].filter(course => course.id !== id);
+    this.setState({classes: newClasses});
+  }
+
   render() {
     return (
       <div className='main-wrapper'>
@@ -30,9 +37,11 @@ class LandingPage extends Component {
           <SearchBar />
         </div>
         <div className='quarter-list-wrapper'>
-        {this.state.classes.map(q => {
+        {this.state.classes.map((quarter, index) => {
             return <QuarterList 
-              quarter={q}/>
+              quarter={quarter}
+              index={index}
+              delete={this.delete_class}/>
           })}
         </div>
       </div>

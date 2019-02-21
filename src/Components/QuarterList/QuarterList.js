@@ -7,8 +7,14 @@ class QuarterList extends Component {
     return (
       <div>
         <div className="quarter-list">
-          {this.props.quarter.map(quarter =>
-            { return <ClassBubble dept={quarter.dept} name={quarter.name}/> })}
+          {this.props.quarter.map(quarter => { 
+            return <ClassBubble 
+              id={quarter.id}
+              dept={quarter.dept} 
+              name={quarter.name}
+              delete={this.props.delete}
+              index={this.props.index}/> 
+          })}
         </div>
         <hr className="horizontal-line"/>
       </div>
