@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ClassBubble from "../ClassBubble/ClassBubble";
+import { connect } from 'react-redux';
+
 import "./QuarterList.css"
 
 class QuarterList extends Component {
@@ -7,7 +9,7 @@ class QuarterList extends Component {
     return (
       <div>
         <div className="quarter-list">
-          {this.props.quarter.map(quarter => ( 
+          {this.props.cls[this.props.index].map(quarter => ( 
             <ClassBubble 
               id={quarter.id}
               dept={quarter.dept} 
@@ -21,4 +23,10 @@ class QuarterList extends Component {
   }
 }
 
-export default QuarterList;
+const mapStateToProps = state => {
+  return {
+    cls: state.classesReducer.classes
+  }
+};
+
+export default connect(mapStateToProps)(QuarterList);

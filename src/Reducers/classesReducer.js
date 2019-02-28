@@ -28,8 +28,9 @@ const classesReducer  = (state = initialState, action) => {
           ...state,
           classes: state.classes[action.classData.index].filter(course => course.id !== action.classData.id)
         }
+      default:
+        return state;
     }
-    return state;
 };
 
 export default classesReducer;

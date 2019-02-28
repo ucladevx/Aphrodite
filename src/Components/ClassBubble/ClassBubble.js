@@ -36,7 +36,7 @@ class ClassBubble extends Component {
 
 const mapStateToProps = state => {
   return {
-    clr: state.classes
+    clr: state.classesReducer.classes
   }
 };
 
