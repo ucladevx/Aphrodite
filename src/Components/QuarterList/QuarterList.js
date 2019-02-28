@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import ClassBubble from "../ClassBubble/ClassBubble";
 
 class QuarterList extends Component {
+  createClassBubble = (classBubble) => {
+    return <ClassBubble name={classBubble}/>;
+  }
+  createClassBubbles = (quarter) => {
+    return quarter.map(this.createClassBubble);
+  }
   render() {
     return (
       <div
@@ -9,13 +15,10 @@ class QuarterList extends Component {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          borderBottom: "1px solid black",
-          padding: 10
+          border: "1px red solid"
         }}
       >
-        {this.props.quarter.map(q =>
-          {return <ClassBubble name={q.name}/>
-        })}
+        {this.createClassBubbles(this.props.quarter)}
       </div>
     );
   }

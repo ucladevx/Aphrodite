@@ -6,11 +6,7 @@ class ClassBubble extends Component {
   }
   render() {
     return (
-      <div style={{ width: 80, height: 80, margin: 12, padding: 20,
-        display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center",
-        background: "#B875D7", borderRadius: 20,
-        fontFamily: "Arial", fontStyle: "normal", fontSize: 20, color: "#FFFFFF"
-      }}
+      <div style={{ width: 50, height: 50, border: "1px blue solid" }}
       onClick={this.cardView}>
         {this.props.name}
       </div>
