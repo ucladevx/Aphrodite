@@ -1,19 +1,34 @@
 import React, { Component } from "react";
 import ClassBubble from "../ClassBubble/ClassBubble";
-import "./QuarterList.css"
+import { connect } from "react-redux";
+
+import "./QuarterList.css";
 
 class QuarterList extends Component {
   render() {
     return (
       <div>
         <div className="quarter-list">
-          {this.props.quarter.map(quarter =>
-            { return <ClassBubble dept={quarter.dept} name={quarter.name}/> })}
+          {console.log(this.props)}
+          {this.props.classrow.map(quarter => (
+            <ClassBubble
+              id={quarter.id}
+              dept={quarter.dept}
+              name={quarter.name}
+              index={this.props.index}
+            />
+          ))}
         </div>
-        <hr className="horizontal-line"/>
+        <hr className="horizontal-line" />
       </div>
     );
   }
 }
 
-export default QuarterList;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    classrow: state.classesReducer.classes[ownProps.index]
+  };
+};
+
+export default connect(mapStateToProps)(QuarterList);
