@@ -1,34 +1,12 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+
 import QuarterList from "../../Components/QuarterList/QuarterList";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import './MainPage.css';
-class LandingPage extends Component {
-  state = {
-    classes: [
-      [
-        { id: 1, dept: "COM SCI", name: "111" },
-        { id: 2, dept: "COM SCI", name: "131" }, 
-        { id: 3, dept: "COM SCI", name: "35L" }
-      ],
-      [
-        { id: 4, dept: "COM SCI", name: "118" }, 
-        { id: 5, dept: "COM SCI", name: "180" }, 
-        { id: 6, dept: "COM SCI", name: "M51A" },
-        { id: 7, dept: "PHYSICS", name: "1C" }
-      ],
-      [
-        { id: 8, dept: "MATH", name: "61" },
-        { id: 9, dept: "MATH", name: "115A" },
-        { id: 10, dept: "COM SCI", name: "M117" }
-      ]
-    ]
-  }
+import * as actionTypes from '../../Actions/classesAction';
 
-  delete_class = (index, id) => {
-    const newClasses = [...this.state.classes];
-    newClasses[index] = this.state.classes[index].filter(course => course.id !== id);
-    this.setState({classes: newClasses});
-  }
+class LandingPage extends Component {
 
   render() {
     return (
@@ -37,16 +15,28 @@ class LandingPage extends Component {
           <SearchBar />
         </div>
         <div className='quarter-list-wrapper'>
-        {this.state.classes.map((quarter, index) => {
-            return <QuarterList 
+        {this.props.clr.map((quarter, index) => (
+            <QuarterList 
               quarter={quarter}
               index={index}
-              delete={this.delete_class}/>
-          })}
+              />
+          ))}
         </div>
       </div>
     );
   }
 }
 
-export default LandingPage;
+const mapStateToProps = state => {
+  return {
+    clr: state.classes
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+      onRemovedClass: (index, id) => dispatch({type: actionTypes.REMOVE_CLASS, classData: {index: index, id: id}})
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

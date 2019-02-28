@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./ClassBubble.css";
+import { connect } from 'react-redux';
+import * as actionTypes from '../../Actions/classesAction';
+
 
 class ClassBubble extends Component {
   cardView = () => {
     console.log(this.props.name + " ClassBubble clicked. At index " + this.props.index);
-    this.props.delete(this.props.index, this.props.id);
+    this.props.onRemovedClass(this.props.index, this.props.id);
   }
 
   bubbleColor = () => {
@@ -31,4 +34,16 @@ class ClassBubble extends Component {
   }
 }
 
-export default ClassBubble;
+const mapStateToProps = state => {
+  return {
+    clr: state.classes
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+      onRemovedClass: (index, id) => dispatch({type: actionTypes.REMOVE_CLASS, classData: {index: index, id: id}})
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClassBubble);
