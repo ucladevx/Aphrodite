@@ -1,5 +1,7 @@
 .search-column {
-  border: 1px black solid;
+  position: fixed;
+  height: 100%;
+  background: white;
 }
 
 .search-box {

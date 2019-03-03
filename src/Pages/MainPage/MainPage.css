@@ -4,13 +4,20 @@
     height: 100vh;
 }
 
+.background {
+    position: fixed;
+    width: 100vw; 
+    height: 100vh;
+    background: #E5E5E5;
+}
+
 .search-wrapper {
     height: 100vh;
-    width: 50vw;
+    width: 30vw;
 }
 
 .quarter-list-wrapper {
-    top: 1000;
+    padding-top: 50px;
     height: 100vh;
-    width: 50vw;
+    width: 70vw;
 }

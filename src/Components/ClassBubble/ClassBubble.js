@@ -19,8 +19,14 @@ class ClassBubble extends Component {
         return "#FFCC69";
       case "MATH":
         return "#FF8F8F";
+      case "CHEM":
+        return "#77EE98";
+      case "STATS":
+        return "#FFA978"
+      case "ENGCOMP":
+        return "#77D6FF";
       default:
-        return "#000000";
+        return "#80A4FF";
     }
   };
 

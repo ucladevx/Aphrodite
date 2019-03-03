@@ -1,3 +1,6 @@
+.quarter-wrapper {
+    position: relative;
+}
 .quarter-list {
     display: flex;
     justify-content: center;
@@ -8,5 +11,14 @@
 
 .horizontal-line {
     border: 0.5px solid black;
-    width: 80%;
+    width: 90%;
+}
+
+.left-label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    font-family: "Arial";
+    font-style: italic;
+    font-size: 18px;
 }

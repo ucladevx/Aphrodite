@@ -10,6 +10,7 @@ class LandingPage extends Component {
   render() {
     return (
       <div className='main-wrapper'>
+        <div className='background'/>
         <div className='search-wrapper'>
           <SearchBar />
         </div>
