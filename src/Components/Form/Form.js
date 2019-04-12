@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Form.css";
+import { Link } from "react-router-dom";
 
 // TO DO:
 // make name, major (?) required input fields
@@ -33,6 +34,8 @@ class Form extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
+    /*
     alert(
       "name: " +
       this.state.name +
@@ -41,8 +44,7 @@ class Form extends Component {
       ", start term: " +
       this.state.year
     );
-
-    event.preventDefault();
+    */
   }
 
   createForm(formTitle) {
@@ -84,13 +86,14 @@ class Form extends Component {
           {this.createForm("year")}
 
           <input hidden type="submit" />
-          <button
+          <Link
+            to='/main'
             className="registration-button"
             type="submit"
-            onClick={this.handleSubmit}
+            //onClick={this.handleSubmit}
           >
             Register
-          </button>
+          </Link>
         </div>
       </div>
     );
