@@ -4,8 +4,10 @@ import "./LandingPage.css";
 class LandingPage extends Component {
   render() {
     return (
+    <div style={{backgroundColor: 'powderblue'}}>
       <div className="landing-wrapper">
         <LoginBox />
+      </div>
       </div>
     );
   }
