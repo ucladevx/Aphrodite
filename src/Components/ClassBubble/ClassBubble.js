@@ -20,15 +20,9 @@ class ClassBubble extends Component {
   }
 
   handleClick = (e) => {
-    if (this.node.contains(e.target)){
-      this.setState({
-        selected: true
-      });
-    } else {
-      this.setState({
-        selected: false
-      });
-    }
+    this.setState({
+      selected: this.node.contains(e.target)
+    });
   }
 
   deleteClass = () => {
