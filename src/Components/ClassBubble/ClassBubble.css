@@ -13,4 +13,16 @@
     font-size: 18px;
     color: #FFFFFF;
     cursor: default;
+    position: relative;
+}
+
+.exit{
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    border-radius: 50%;
+    background: black;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
 }

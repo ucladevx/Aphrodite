@@ -4,12 +4,39 @@ import { connect } from "react-redux";
 import * as actionTypes from "../../Actions/classesAction";
 
 class ClassBubble extends Component {
-  cardView = () => {
-    console.log(
-      this.props.name + " ClassBubble clicked. At index " + this.props.index
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: false
+    };
+  }
+
+  componentWillMount(){
+    document.addEventListener('mousedown', this.handleClick, false);
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener('mousedown', this.handleClick, false);
+  }
+
+  handleClick = (e) => {
+    if (this.node.contains(e.target)){
+      this.setState({
+        selected: true
+      });
+    } else {
+      this.setState({
+        selected: false
+      });
+    }
+  }
+
+  deleteClass = () => {
+    this.setState({
+      selected: false
+    });
     this.props.onRemovedClass(this.props.index, this.props.id);
-  };
+  }
 
   bubbleColor = () => {
     switch (this.props.dept) {
@@ -33,11 +60,18 @@ class ClassBubble extends Component {
   render() {
     return (
       <div
+        ref={node => this.node = node}
         className="bubble"
-        onClick={this.cardView}
-        style={{ background: this.bubbleColor() }}
+        //onClick={this.cardView}
+        style={{ 
+          background: this.bubbleColor(),
+          border: (this.state.selected ? "5px solid white" : null)
+        }}
       >
         <div>{this.props.dept + " " + this.props.name}</div>
+        {this.state.selected? 
+            <div className="exit" onClick={this.deleteClass}>x</div>
+           : null}
       </div>
     );
   }
