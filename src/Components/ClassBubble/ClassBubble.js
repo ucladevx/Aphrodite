@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./ClassBubble.css";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Actions/classesAction";
+import {Draggable} from 'react-beautiful-dnd';
 
 class ClassBubble extends Component {
   constructor(props) {
@@ -29,11 +30,11 @@ class ClassBubble extends Component {
     this.setState({
       selected: false
     });
-    this.props.onRemovedClass(this.props.index, this.props.id);
+    this.props.onRemovedClass(this.props.quarter, this.props.id);
   }
 
   bubbleColor = () => {
-    switch (this.props.dept) {
+    switch (this.props.class.dept) {
       case "COM SCI":
         return "#B875D7";
       case "PHYSICS":
@@ -56,14 +57,13 @@ class ClassBubble extends Component {
       <div
         ref={node => this.node = node}
         className="bubble"
-        //onClick={this.cardView}
         style={{ 
           background: this.bubbleColor(),
           border: (this.state.selected ? "5px solid white" : null)
         }}
       >
-        <div>{this.props.dept + " " + this.props.name}</div>
-        {this.state.selected? 
+        <div>{this.props.class.dept + " " + this.props.class.name}</div>
+          {this.state.selected? 
             <div className="exit" onClick={this.deleteClass}>x</div>
            : null}
       </div>
@@ -71,18 +71,18 @@ class ClassBubble extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    clr: state.classesReducer.classes
+    class: state.classesReducer.classes[ownProps.id]
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onRemovedClass: (index, id) =>
+    onRemovedClass: (quarterID, classID) =>
       dispatch({
         type: actionTypes.REMOVE_CLASS,
-        classData: { index: index, id: id }
+        classData: { quarterID: quarterID, classID: classID }
       })
   };
 };

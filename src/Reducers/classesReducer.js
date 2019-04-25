@@ -1,5 +1,37 @@
 import * as actionTypes from "../Actions/classesAction";
+const initialState = {
+  classes: {
+    'c1' : { id: 1, dept: "COM SCI", name: "1" },
+    'c2' : { id: 2, dept: "COM SCI", name: "31" },
+    'c3' : { id: 3, dept: "ENGCOMP", name: "3" },
+    'c4' : { id: 4, dept: "MATH", name: "31A" }
+  },
+  quarters: {
+    'q1': {
+      id: 'q1',
+      title: "To Do",
+      classIds: ['c1','c2']
+    },
+    'q2': {
+      id: 'q2',
+      title: "To Do",
+      classIds: ['c4']
+    },
+    'q3': {
+      id: 'q3',
+      title: "To Do",
+      classIds: []
+    },
+    'q4': {
+      id: 'q4',
+      title: "To Do",
+      classIds: ['c3']
+    }
+  },
+  quarterOrder: ['q1', 'q2', 'q3', 'q4']
+};
 
+/*
 const initialState = {
   classes: [
     [
@@ -74,18 +106,18 @@ const initialState = {
     ]
   ]
 };
-
+*/
 const classesReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.REMOVE_CLASS:
-      let newClasses = state.classes;
-      newClasses[action.classData.index] = state.classes[
-        action.classData.index
-      ].filter(course => course.id !== action.classData.id);
-      console.log(newClasses);
+      let newQuarter = state.quarters[action.classData.quarterID];
+      newQuarter.classIds = newQuarter.classIds.filter(c => c !== action.classData.classID);
       return {
         ...state,
-        classes: newClasses
+        quarters: {
+          ...state.quarters,
+          [action.classData.quarterID] : newQuarter
+        }
       };
     default:
       return state;

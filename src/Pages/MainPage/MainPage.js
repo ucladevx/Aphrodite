@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import {DragDropContext} from 'react-beautiful-dnd';
 
 import QuarterList from "../../Components/QuarterList/QuarterList";
 import SearchBar from "../../Components/SearchBar/SearchBar";
@@ -15,8 +16,8 @@ class LandingPage extends Component {
           <SearchBar />
         </div>
         <div className='quarter-list-wrapper'>
-        {this.props.cls.map((quarter, index) => (
-            <QuarterList index={index}/>
+        {this.props.qorder.map((qid, index) => (
+            <QuarterList id={qid} index={index}/>
           ))}
         </div>
       </div>
@@ -26,7 +27,7 @@ class LandingPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    cls: state.classesReducer.classes
+    qorder: state.classesReducer.quarterOrder
   }
 };
 

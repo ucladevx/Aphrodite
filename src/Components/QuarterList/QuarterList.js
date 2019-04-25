@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import ClassBubble from "../ClassBubble/ClassBubble";
 import { connect } from "react-redux";
+import {Droppable} from 'react-beautiful-dnd';
 
 import "./QuarterList.css";
 
 class QuarterList extends Component {
   
   leftLabel = (index) => {  //FOR DEMO ONLY
-    var quarter;
-    var year;
+    let quarter;
+    let year;
     switch (index % 4) {
       case 0:
         quarter = 'F ';
@@ -44,12 +45,10 @@ class QuarterList extends Component {
         </div>
         <div className="quarter-list">
           {console.log(this.props)}
-          {this.props.classrow.map(quarter => (
+          {this.props.classrow.map(classID => (
             <ClassBubble
-              id={quarter.id}
-              dept={quarter.dept}
-              name={quarter.name}
-              index={this.props.index}
+              id={classID}
+              quarter={this.props.id}
             />
           ))}
         </div>
@@ -61,7 +60,7 @@ class QuarterList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    classrow: state.classesReducer.classes[ownProps.index]
+    classrow: state.classesReducer.quarters[ownProps.id].classIds
   };
 };
 
