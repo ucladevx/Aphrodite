@@ -43,15 +43,26 @@ class QuarterList extends Component {
         <div className="left-label">
           {this.leftLabel(this.props.index)}
         </div>
-        <div className="quarter-list">
-          {console.log(this.props)}
-          {this.props.classrow.map(classID => (
-            <ClassBubble
-              id={classID}
-              quarter={this.props.id}
-            />
-          ))}
-        </div>
+        <Droppable droppableId={this.props.id}>
+          {provided => (
+          <div 
+            ref={provided.innerRef}
+            innerRef={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            <div className="quarter-list">
+              {this.props.classes.map((c, index) => (
+                <ClassBubble
+                  class={c}
+                  //quarter={this.props.id}
+                  //index={index}
+                />
+              ))}
+              {provided.placeholder}
+            </div>
+          </div>
+          )}
+        </Droppable>
         <hr className="horizontal-line" />
       </div>
     );
@@ -60,8 +71,9 @@ class QuarterList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    classrow: state.classesReducer.quarters[ownProps.id].classIds
+    //classrow: state.classesReducer.quarters[ownProps.id].classIds
   };
 };
+//export default connect(mapStateToProps)(QuarterList);
 
-export default connect(mapStateToProps)(QuarterList);
+export default QuarterList;

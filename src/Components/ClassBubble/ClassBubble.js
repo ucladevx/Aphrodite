@@ -21,9 +21,11 @@ class ClassBubble extends Component {
   }
 
   handleClick = (e) => {
+    /*
     this.setState({
       selected: this.node.contains(e.target)
     });
+    */
   }
 
   deleteClass = () => {
@@ -34,6 +36,8 @@ class ClassBubble extends Component {
   }
 
   bubbleColor = () => {
+    return "#B875D7";
+    /*
     switch (this.props.class.dept) {
       case "COM SCI":
         return "#B875D7";
@@ -50,30 +54,44 @@ class ClassBubble extends Component {
       default:
         return "#80A4FF";
     }
+    */
   };
 
   render() {
     return (
-      <div
-        ref={node => this.node = node}
-        className="bubble"
-        style={{ 
-          background: this.bubbleColor(),
-          border: (this.state.selected ? "5px solid white" : null)
-        }}
+      <Draggable
+        draggableId={this.props.class.id}
+        index={this.props.index}
       >
-        <div>{this.props.class.dept + " " + this.props.class.name}</div>
-          {this.state.selected? 
-            <div className="exit" onClick={this.deleteClass}>x</div>
-           : null}
-      </div>
+        {provided => (
+          <div
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+            innerRef={provided.innerRef}
+            //ref={node => this.node = node}
+          >
+            <div
+              className="bubble"
+              style={{ 
+                background: this.bubbleColor(),
+                border: (this.state.selected ? "5px solid white" : null)
+              }}>
+              <div>{this.props.class.dept + " " + this.props.class.name}</div>
+                {this.state.selected? 
+                  <div className="exit" onClick={this.deleteClass}>x</div>
+                : null}
+            </div>
+          </div>
+        )}
+      </Draggable>
     );
   }
 }
-
+/*
 const mapStateToProps = (state, ownProps) => {
   return {
-    class: state.classesReducer.classes[ownProps.id]
+    //class: state.classesReducer.classes[ownProps.id]
   };
 };
 
@@ -86,8 +104,6 @@ const mapDispatchToProps = dispatch => {
       })
   };
 };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ClassBubble);
+*/
+//export default connect(mapStateToProps,mapDispatchToProps)(ClassBubble);
+export default ClassBubble;
