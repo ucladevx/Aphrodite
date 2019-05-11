@@ -43,7 +43,10 @@ class QuarterList extends Component {
         <div className="left-label">
           {this.leftLabel(this.props.index)}
         </div>
-        <Droppable droppableId={this.props.id}>
+        <Droppable 
+          droppableId={this.props.id}
+          direction="horizontal"
+          >
           {provided => (
           <div 
             ref={provided.innerRef}
@@ -54,8 +57,7 @@ class QuarterList extends Component {
               {this.props.classes.map((c, index) => (
                 <ClassBubble
                   class={c}
-                  //quarter={this.props.id}
-                  //index={index}
+                  index={index}
                 />
               ))}
               {provided.placeholder}
