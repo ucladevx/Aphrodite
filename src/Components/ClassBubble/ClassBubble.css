@@ -1,8 +1,8 @@
 .bubble {
     width: 110px; 
     height: 110px;
-    margin: 12px;
     padding: 10px;
+    margin: 12px;
     display: flex;
     align-items: center;
     justify-content: center;

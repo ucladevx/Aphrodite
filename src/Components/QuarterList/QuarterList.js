@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ClassBubble from "../ClassBubble/ClassBubble";
-import { connect } from "react-redux";
 import {Droppable} from 'react-beautiful-dnd';
 
 import "./QuarterList.css";
@@ -52,8 +51,8 @@ class QuarterList extends Component {
             ref={provided.innerRef}
             innerRef={provided.innerRef}
             {...provided.droppableProps}
+            className="quarter-list"
           >
-            <div className="quarter-list">
               {this.props.classes.map((c, index) => (
                 <ClassBubble
                   class={c}
@@ -62,7 +61,7 @@ class QuarterList extends Component {
               ))}
               {provided.placeholder}
             </div>
-          </div>
+
           )}
         </Droppable>
         <hr className="horizontal-line" />
@@ -70,12 +69,5 @@ class QuarterList extends Component {
     );
   }
 }
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    //classrow: state.classesReducer.quarters[ownProps.id].classIds
-  };
-};
-//export default connect(mapStateToProps)(QuarterList);
 
 export default QuarterList;

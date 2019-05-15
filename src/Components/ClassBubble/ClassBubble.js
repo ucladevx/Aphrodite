@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./ClassBubble.css";
-import { connect } from "react-redux";
-import * as actionTypes from "../../Actions/classesAction";
 import {Draggable} from 'react-beautiful-dnd';
 
 class ClassBubble extends Component {
@@ -13,11 +11,11 @@ class ClassBubble extends Component {
   }
 
   componentWillMount(){
-    document.addEventListener('mousedown', this.handleClick, false);
+    //document.addEventListener('mousedown', this.handleClick, false);
   }
 
   componentWillUnmount(){
-    document.removeEventListener('mousedown', this.handleClick, false);
+    //document.removeEventListener('mousedown', this.handleClick, false);
   }
 
   handleClick = (e) => {
@@ -29,15 +27,15 @@ class ClassBubble extends Component {
   }
 
   deleteClass = () => {
+    /*
     this.setState({
       selected: false
     });
     this.props.onRemovedClass(this.props.quarter, this.props.id);
+    */
   }
 
   bubbleColor = () => {
-    return "#B875D7";
-    /*
     switch (this.props.class.dept) {
       case "COM SCI":
         return "#B875D7";
@@ -54,7 +52,6 @@ class ClassBubble extends Component {
       default:
         return "#80A4FF";
     }
-    */
   };
 
   render() {
@@ -72,6 +69,7 @@ class ClassBubble extends Component {
             //ref={node => this.node = node}
           >
             <div
+              id={this.props.id}
               className="bubble"
               style={{ 
                 background: this.bubbleColor(),
@@ -88,22 +86,5 @@ class ClassBubble extends Component {
     );
   }
 }
-/*
-const mapStateToProps = (state, ownProps) => {
-  return {
-    //class: state.classesReducer.classes[ownProps.id]
-  };
-};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onRemovedClass: (quarterID, classID) =>
-      dispatch({
-        type: actionTypes.REMOVE_CLASS,
-        classData: { quarterID: quarterID, classID: classID }
-      })
-  };
-};
-*/
-//export default connect(mapStateToProps,mapDispatchToProps)(ClassBubble);
 export default ClassBubble;

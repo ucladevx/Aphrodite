@@ -39,3 +39,10 @@
   border: #ededed;
   font-size: 14px;
 }
+
+.search-list {
+  flex-direction: column;
+  height: 500px;
+  width: 134px;
+  overflow: hidden;
+}

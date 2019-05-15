@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import ClassCard from "../ClassCard/ClassCard";
+import ClassBubble from "../ClassBubble/ClassBubble";
 import "./SearchBar.css";
 import Collapsible from "react-collapsible";
 // https://www.npmjs.com/package/react-collapsible
 import ReactSearchBox from "react-search-box";
 // https://github.com/ghoshnirmalya/react-search-box
+import {Droppable} from 'react-beautiful-dnd';
+
 
 class SearchBar extends Component {
   // array of objects holding all searchable classes
@@ -56,32 +59,27 @@ class SearchBar extends Component {
             </div>
           </Collapsible>
         </div>
+        <Droppable 
+          droppableId={this.props.id}
+          >
+          {provided => (
+          <div 
+            ref={provided.innerRef}
+            innerRef={provided.innerRef}
+            {...provided.droppableProps}
+            className="search-list"
+          >
+              {this.props.classes.map((c, index) => (
+                <ClassBubble
+                  class={c}
+                  index={index}
+                />
+              ))}
+              {provided.placeholder}
+            </div>
 
-        <ClassCard
-          classCategory="Computer Science"
-          classNumber="M146"
-          className="Introduction to Machine Learning"
-          units="4.0"
-          gradeType="Letter Grade"
-          classRestrictions={["Ug Engr", "Bioinfo Minor"]}
-          impacted="No"
-          level="Upper Division"
-          preRequisites={["Civil and Environmental Engineering"]}
-          coRequisites={["None"]}
-        />
-
-        <ClassCard
-          classCategory="Computer Science"
-          classNumber="M152A"
-          className="Introductory Digital Design Laboratory"
-          units="4.0"
-          gradeType="Letter Grade"
-          classRestrictions={["Ug Engr", "Bioinfo Minor"]}
-          impacted="No"
-          level="Upper Division"
-          preRequisites={["Civil and Environmental Engineering"]}
-          coRequisites={["None"]}
-        />
+          )}
+        </Droppable>
       </div>
     );
   }

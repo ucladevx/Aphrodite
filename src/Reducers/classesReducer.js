@@ -1,12 +1,19 @@
 import * as actionTypes from "../Actions/classesAction";
 const initialState = {
   classes: {
-    'c1' : { id: 1, dept: "COM SCI", name: "1" },
-    'c2' : { id: 2, dept: "COM SCI", name: "31" },
-    'c3' : { id: 3, dept: "ENGCOMP", name: "3" },
-    'c4' : { id: 4, dept: "MATH", name: "31A" }
+    'c1' : { id: 'c1', dept: "COM SCI", name: "1" },
+    'c2' : { id: 'c2', dept: "COM SCI", name: "31" },
+    'c3' : { id: 'c3', dept: "ENGCOMP", name: "3" },
+    'c4' : { id: 'c4', dept: "MATH", name: "31A" },
+    'c5' : { id: 'c5', dept: "PHYSICS", name: "1B" },
+    'c6' : { id: 'c6', dept: "PHYSICS", name: "1C" }
   },
   quarters: {
+    'search': {
+      id: 'search',
+      title: "To Do",
+      classIds: ['c5','c6']
+    },
     'q1': {
       id: 'q1',
       title: "To Do",
@@ -109,6 +116,65 @@ const initialState = {
 */
 const classesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.DROP_CLASS:
+      const {destination, source, draggableId} = action.result;
+      if (!destination){
+        return state;
+      }
+
+      if (
+        destination.droppableId === source.droppableId &&
+        destination.index === source.index
+      ) {
+        return state;
+      }
+
+      const start = state.quarters[source.droppableId];
+      const finish = state.quarters[destination.droppableId];
+
+      if (start === finish){
+        const newClassIds = Array.from(start.classIds);
+        newClassIds.splice(source.index, 1);
+        newClassIds.splice(destination.index, 0, draggableId);
+
+        const newQuarter = {
+          ...start,
+          classIds: newClassIds,
+        };
+
+        const newState = {
+          ...state,
+          quarters: {
+            ...state.quarters,
+            [newQuarter.id]: newQuarter,
+          },
+        };
+        return newState;
+      } 
+
+      const startClassIds = Array.from(start.classIds);
+      startClassIds.splice(source.index, 1);
+      const newStart = {
+        ...start,
+        classIds: startClassIds,
+      };
+
+      const finishClassIds = Array.from(finish.classIds);
+      finishClassIds.splice(destination.index, 0, draggableId);
+      const newFinish = {
+        ...finish,
+        classIds: finishClassIds,
+      };
+
+      const newState = {
+        ...state,
+        quarters: {
+          ...state.quarters,
+          [newStart.id]: newStart,
+          [newFinish.id]: newFinish,
+        },
+      };
+      return newState;
     case actionTypes.REMOVE_CLASS:
       let newQuarter = state.quarters[action.classData.quarterID];
       newQuarter.classIds = newQuarter.classIds.filter(c => c !== action.classData.classID);

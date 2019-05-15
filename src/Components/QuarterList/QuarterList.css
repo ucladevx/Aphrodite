@@ -1,11 +1,10 @@
 .quarter-wrapper {
     position: relative;
 }
+
 .quarter-list {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+    height: 150px;
     overflow: hidden;
 }
 
