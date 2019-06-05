@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actionTypes from "../../Actions/formAction";
+import * as classActionTypes from "../../Actions/classesAction";
 import "./Form.css";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+const axios = require("axios");
 
-var majors = [  
+const majors = [  
   "Aerospace Studies",
   "African American Studies",
   "African Studies",
@@ -185,7 +187,330 @@ var majors = [
   "Vietnamese",
   "World Arts and Cultures",
   "Yiddish"
-]
+];
+
+const sample = {
+  "search": {
+      "id": "search",
+      "title": "temporary",
+      "classIds": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12",
+          "c13",
+          "c14",
+          "c15",
+          "c16",
+          "c17",
+          "c18",
+          "c19",
+          "c20",
+          "c21",
+          "c22",
+          "c23",
+          "c24",
+          "c25",
+          "c26",
+          "c27",
+          "c28",
+          "c29",
+          "c30",
+          "c31",
+          "c32",
+          "c33",
+          "c34",
+          "c35",
+          "c36",
+          "c37",
+          "c38",
+          "c39",
+          "c40",
+          "c41",
+          "c42",
+          "c43",
+          "c44",
+          "c45",
+          "c46",
+          "c47",
+          "c48",
+          "c49",
+          "c50",
+          "c51",
+          "c52"
+      ]
+  },
+  "classes": {
+      "c1": {
+          "id": "c1",
+          "dept": "COM SCI",
+          "name": "19"
+      },
+      "c2": {
+          "id": "c2",
+          "dept": "COM SCI",
+          "name": "31"
+      },
+      "c3": {
+          "id": "c3",
+          "dept": "COM SCI",
+          "name": "32"
+      },
+      "c4": {
+          "id": "c4",
+          "dept": "COM SCI",
+          "name": "33"
+      },
+      "c5": {
+          "id": "c5",
+          "dept": "COM SCI",
+          "name": "35L"
+      },
+      "c6": {
+          "id": "c6",
+          "dept": "COM SCI",
+          "name": "M51A"
+      },
+      "c7": {
+          "id": "c7",
+          "dept": "COM SCI",
+          "name": "88S"
+      },
+      "c8": {
+          "id": "c8",
+          "dept": "COM SCI",
+          "name": "111"
+      },
+      "c9": {
+          "id": "c9",
+          "dept": "COM SCI",
+          "name": "112"
+      },
+      "c10": {
+          "id": "c10",
+          "dept": "COM SCI",
+          "name": "118"
+      },
+      "c11": {
+          "id": "c11",
+          "dept": "COM SCI",
+          "name": "M119"
+      },
+      "c12": {
+          "id": "c12",
+          "dept": "COM SCI",
+          "name": "CM122"
+      },
+      "c13": {
+          "id": "c13",
+          "dept": "COM SCI",
+          "name": "130"
+      },
+      "c14": {
+          "id": "c14",
+          "dept": "COM SCI",
+          "name": "131"
+      },
+      "c15": {
+          "id": "c15",
+          "dept": "COM SCI",
+          "name": "143"
+      },
+      "c16": {
+          "id": "c16",
+          "dept": "COM SCI",
+          "name": "M146"
+      },
+      "c17": {
+          "id": "c17",
+          "dept": "COM SCI",
+          "name": "M151B"
+      },
+      "c18": {
+          "id": "c18",
+          "dept": "COM SCI",
+          "name": "M152A"
+      },
+      "c19": {
+          "id": "c19",
+          "dept": "COM SCI",
+          "name": "152B"
+      },
+      "c20": {
+          "id": "c20",
+          "dept": "COM SCI",
+          "name": "161"
+      },
+      "c21": {
+          "id": "c21",
+          "dept": "COM SCI",
+          "name": "168"
+      },
+      "c22": {
+          "id": "c22",
+          "dept": "COM SCI",
+          "name": "174A"
+      },
+      "c23": {
+          "id": "c23",
+          "dept": "COM SCI",
+          "name": "180"
+      },
+      "c24": {
+          "id": "c24",
+          "dept": "COM SCI",
+          "name": "181"
+      },
+      "c25": {
+          "id": "c25",
+          "dept": "COM SCI",
+          "name": "CM187"
+      },
+      "c26": {
+          "id": "c26",
+          "dept": "COM SCI",
+          "name": "188"
+      },
+      "c27": {
+          "id": "c27",
+          "dept": "COM SCI",
+          "name": "192"
+      },
+      "c28": {
+          "id": "c28",
+          "dept": "COM SCI",
+          "name": "192A"
+      },
+      "c29": {
+          "id": "c29",
+          "dept": "COM SCI",
+          "name": "201"
+      },
+      "c30": {
+          "id": "c30",
+          "dept": "COM SCI",
+          "name": "205"
+      },
+      "c31": {
+          "id": "c31",
+          "dept": "COM SCI",
+          "name": "216"
+      },
+      "c32": {
+          "id": "c32",
+          "dept": "COM SCI",
+          "name": "217B"
+      },
+      "c33": {
+          "id": "c33",
+          "dept": "COM SCI",
+          "name": "218"
+      },
+      "c34": {
+          "id": "c34",
+          "dept": "COM SCI",
+          "name": "CM222"
+      },
+      "c35": {
+          "id": "c35",
+          "dept": "COM SCI",
+          "name": "M229S"
+      },
+      "c36": {
+          "id": "c36",
+          "dept": "COM SCI",
+          "name": "230"
+      },
+      "c37": {
+          "id": "c37",
+          "dept": "COM SCI",
+          "name": "236"
+      },
+      "c38": {
+          "id": "c38",
+          "dept": "COM SCI",
+          "name": "239"
+      },
+      "c39": {
+          "id": "c39",
+          "dept": "COM SCI",
+          "name": "240A"
+      },
+      "c40": {
+          "id": "c40",
+          "dept": "COM SCI",
+          "name": "247"
+      },
+      "c41": {
+          "id": "c41",
+          "dept": "COM SCI",
+          "name": "249"
+      },
+      "c42": {
+          "id": "c42",
+          "dept": "COM SCI",
+          "name": "259"
+      },
+      "c43": {
+          "id": "c43",
+          "dept": "COM SCI",
+          "name": "262A"
+      },
+      "c44": {
+          "id": "c44",
+          "dept": "COM SCI",
+          "name": "264A"
+      },
+      "c45": {
+          "id": "c45",
+          "dept": "COM SCI",
+          "name": "269"
+      },
+      "c46": {
+          "id": "c46",
+          "dept": "COM SCI",
+          "name": "275"
+      },
+      "c47": {
+          "id": "c47",
+          "dept": "COM SCI",
+          "name": "280D"
+      },
+      "c48": {
+          "id": "c48",
+          "dept": "COM SCI",
+          "name": "CM287"
+      },
+      "c49": {
+          "id": "c49",
+          "dept": "COM SCI",
+          "name": "289A"
+      },
+      "c50": {
+          "id": "c50",
+          "dept": "COM SCI",
+          "name": "289CO"
+      },
+      "c51": {
+          "id": "c51",
+          "dept": "COM SCI",
+          "name": "298"
+      },
+      "c52": {
+          "id": "c52",
+          "dept": "COM SCI",
+          "name": "375"
+      }
+  }
+};
 
 // TO DO:
 // make name, major (?) required input fields
@@ -219,7 +544,21 @@ class Form extends Component {
     const result = [this.state.name, this.state.major, this.state.year];
     this.props.onUpdateForm(result);
 
-    window.location = '/main';
+    const formData = {"department": this.state.major};
+    const config = {
+      headers: {
+          'content-type': 'multipart/form-data'
+      }
+    };
+
+    axios.post("http://localhost:3001/api/initDeptTiles", formData, config)
+            .then((response) => {
+                console.log("response", response)
+                this.props.onLoadClass(response);
+            }).catch((error) => {
+              console.log(error);
+              //this.props.onLoadClass(sample);       ///REMOVE THIS LINE
+        });
   }
 
   createMajorForm(formTitle) {
@@ -294,6 +633,13 @@ class Form extends Component {
           >
             Register
           </button>
+          <Link
+          className="registration-button"
+          type="submit"
+          to='/main'
+          >
+            go to main page
+          </Link>
         </div>
       </div>
       </div>
@@ -307,6 +653,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.UPDATE_FORM,
         form: result
+      }),
+    onLoadClass: result =>
+      dispatch({
+        type: classActionTypes.LOAD_CLASS,
+        result: result
       })
   };
 };

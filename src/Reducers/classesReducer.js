@@ -1,28 +1,21 @@
 import * as actionTypes from "../Actions/classesAction";
 const initialState = {
-  classes: {
-    'c1' : { id: 'c1', dept: "COM SCI", name: "1" },
-    'c2' : { id: 'c2', dept: "COM SCI", name: "31" },
-    'c3' : { id: 'c3', dept: "ENGCOMP", name: "3" },
-    'c4' : { id: 'c4', dept: "MATH", name: "31A" },
-    'c5' : { id: 'c5', dept: "PHYSICS", name: "1B" },
-    'c6' : { id: 'c6', dept: "PHYSICS", name: "1C" }
-  },
+  classes: {},
   quarters: {
     'search': {
       id: 'search',
       title: "To Do",
-      classIds: ['c5','c6']
+      classIds: []
     },
     'q1': {
       id: 'q1',
       title: "To Do",
-      classIds: ['c1','c2']
+      classIds: []
     },
     'q2': {
       id: 'q2',
       title: "To Do",
-      classIds: ['c4']
+      classIds: []
     },
     'q3': {
       id: 'q3',
@@ -32,7 +25,7 @@ const initialState = {
     'q4': {
       id: 'q4',
       title: "To Do",
-      classIds: ['c3']
+      classIds: []
     }
   },
   quarterOrder: ['q1', 'q2', 'q3', 'q4']
@@ -116,7 +109,19 @@ const initialState = {
 */
 const classesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.LOAD_CLASS:
+      console.log(state)
+      const {classes, search} = action.result;
+      return {
+        ...state,
+        classes: classes,
+        quarters: {
+          ...state.quarters,
+          search: search
+        }
+      };
     case actionTypes.DROP_CLASS:
+      console.log(state)
       const {destination, source, draggableId} = action.result;
       if (!destination){
         return state;

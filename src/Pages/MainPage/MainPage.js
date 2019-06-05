@@ -18,6 +18,7 @@ class LandingPage extends Component {
         onDragEnd={this.onDragEnd}
       >
         <div className='main-wrapper'>
+          <button className='main-button'>CLICK</button>
           <div className='background'/>
           <div className='search-wrapper'>
             <SearchBar 
