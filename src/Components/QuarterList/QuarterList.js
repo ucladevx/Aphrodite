@@ -22,16 +22,24 @@ class QuarterList extends Component {
       default:
         return '';
     }
-    if (index > 12){
-      year = '22';
-    } else if (index > 8) {
-      year = '21';
-    } else if (index > 4) {
-      year = '20';
-    } else if (index > 0) {
-      year = '19';
-    } else {
-      year = '18';
+    switch (Math.floor((index + 2)/ 3)) {
+      case 4:
+        year = '20';
+        break;
+      case 3:
+        year = '19';
+        break;
+      case 2:
+        year = '18';
+        break;
+      case 1:
+        year = '17';
+        break;
+      case 0:
+        year = '16';
+        break;
+      default:
+        year = '';
     }
     return quarter + year;
   }

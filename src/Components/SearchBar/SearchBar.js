@@ -59,27 +59,31 @@ class SearchBar extends Component {
             </div>
           </Collapsible>
         </div>
-        <Droppable 
-          droppableId={this.props.id}
-          >
-          {provided => (
-          <div 
-            ref={provided.innerRef}
-            innerRef={provided.innerRef}
-            {...provided.droppableProps}
-            className="search-list"
-          >
-              {this.props.classes.map((c, index) => (
-                <ClassBubble
-                  class={c}
-                  index={index}
-                />
-              ))}
-              {provided.placeholder}
-            </div>
+        <div className="search-results-container">
+          <div className="search-results">
+            <Droppable 
+              droppableId={this.props.id}
+              >
+              {provided => (
+              <div 
+                ref={provided.innerRef}
+                innerRef={provided.innerRef}
+                {...provided.droppableProps}
+                className="search-list"
+              >
+                  {this.props.classes.map((c, index) => (
+                    <ClassBubble
+                      class={c}
+                      index={index}
+                    />
+                  ))}
+                  {provided.placeholder}
+                </div>
 
-          )}
-        </Droppable>
+              )}
+            </Droppable>
+          </div>
+        </div>
       </div>
     );
   }

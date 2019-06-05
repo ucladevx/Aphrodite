@@ -6,6 +6,7 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import QuarterList from "../../Components/QuarterList/QuarterList";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import './MainPage.css';
+const axios = require("axios");
 
 class LandingPage extends Component {
   onPostClass = () => {
@@ -13,9 +14,9 @@ class LandingPage extends Component {
       //TODO: get id and email from google oauth
       "id": 123, 
       "name": this.props.name, 
-      "major":this.props.major, 
-      //"email":this.props.email,
-      "startTerm":this.props.year,
+      "major": this.props.major, 
+      "email": "example@gmail.com",
+      "startTerm": this.props.year,
       "takenCourses": this.props.classes
       };
     const config = {
@@ -32,12 +33,12 @@ class LandingPage extends Component {
             //this.props.onLoadClass(sample);       ///REMOVE THIS LINE
       });
 
-    const formData = {
-      "department":this.props.dept,
+    formData = {
+      "department": this.props.major,
       "takenCourses": this.props.classes
       };
 
-    axios.post("http://localhost:3001/api/validMajorClasses", formData, config)
+    axios.post("http://localhost:3001/post/validMajorClasses", formData, config)
         .then((response) => {
           console.log("response", response)
           //TODO:
@@ -72,7 +73,7 @@ class LandingPage extends Component {
           </div>
           <div className='quarter-list-wrapper'>
           {
-            this.props.quarterOrder.map(qid => {
+            this.props.quarterOrder.map((qid, index) => {
               const q = this.props.quarters[qid];
               const cls = q.classIds.map(cid => this.props.classes[cid])
 
@@ -80,6 +81,7 @@ class LandingPage extends Component {
                 quarter={q} 
                 classes={cls} 
                 id={qid}
+                index={index}
               />;
             })}
           </div>
@@ -93,7 +95,10 @@ const mapStateToProps = state => {
   return {
     classes: state.classesReducer.classes,
     quarterOrder: state.classesReducer.quarterOrder,
-    quarters: state.classesReducer.quarters
+    quarters: state.classesReducer.quarters,
+    name: state.formReducer.name,
+    major: state.formReducer.major,
+    year: state.formReducer.year
   }
 };
 
@@ -103,7 +108,12 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.DROP_CLASS,
         result: result
-      })
+      }),/*
+    onUploadClass: result =>
+      dispatch({
+        type: actionTypes.DROP_CLASS,
+        result: result
+      })*/
   };
 };
 
