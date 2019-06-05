@@ -46,9 +46,29 @@ const initialState = {
       id: 'q8',
       title: "To Do",
       classIds: []
+    },
+    'q9': {
+      id: 'q9',
+      title: "To Do",
+      classIds: []
+    },
+    'q10': {
+      id: 'q10',
+      title: "To Do",
+      classIds: []
+    },
+    'q11': {
+      id: 'q11',
+      title: "To Do",
+      classIds: []
+    },
+    'q12': {
+      id: 'q12',
+      title: "To Do",
+      classIds: []
     }
   },
-  quarterOrder: ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8']
+  quarterOrder: ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12']
 };
 
 /*

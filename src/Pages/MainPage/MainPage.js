@@ -12,7 +12,6 @@ class LandingPage extends Component {
   onPostClass = () => {
     let userDetails = JSON.parse(sessionStorage.getItem('userData'))
     const formData = {
-      //TODO: get id and email from google oauth
       "id": userDetails["googleID"],
       "name": this.props.name,
       "major": this.props.major,
@@ -26,7 +25,6 @@ class LandingPage extends Component {
             console.log("success", response);
           }).catch((error) => {
             console.log(error);
-            //this.props.onLoadClass(sample);       ///REMOVE THIS LINE
       });
 
     formData = {

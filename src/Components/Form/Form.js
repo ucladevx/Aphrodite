@@ -540,7 +540,10 @@ class Form extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
+    if (!this.state.name || !this.state.major || !this.state.year){
+      alert("Missing Fields")
+      event.preventDefault();
+    }
     this.props.onUpdateForm(this.state);
     console.log("here")
     const formData = {"department": this.state.major};
@@ -621,19 +624,13 @@ class Form extends Component {
           {this.createForm("year")}
 
           <input hidden type="submit" />
-          <button
-            className="registration-button"
-            type="submit"
-            onClick={this.handleSubmit}
-          >
-            Register
-          </button>
           <Link
             className="registration-button"
             type="submit"
             to='/main'
+            onClick={this.handleSubmit}
           >
-            go to main page
+            Register
           </Link>
         </div>
       </div>
