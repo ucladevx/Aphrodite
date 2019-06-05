@@ -195,7 +195,7 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      name: "",
+      name: this.props.location.state.name,
       major: "",
       year: ""
     };
@@ -244,6 +244,10 @@ class Form extends Component {
     );
   }
   createForm(formTitle) {
+      var val = ""
+      if(formTitle == "name") val = this.state.name
+      if(formTitle == "major") val = this.state.major
+      if(formTitle == "year") val = this.state.year
     return (
       <div className="form-group">
         <input
@@ -252,7 +256,7 @@ class Form extends Component {
           className="form-control"
           required
           name={formTitle}
-          value={this.state[{ formTitle }]}
+          value={val}
           onChange={this.handleInputChange}
         />
         <label className="form-control-placeholder" htmlFor={formTitle}>
@@ -275,6 +279,7 @@ class Form extends Component {
 */
   render() {
     return (
+        <div style={{backgroundColor: 'powderblue'}}>
       <div>
         <div className="registration-form">
           {this.createForm("name")}
@@ -290,6 +295,7 @@ class Form extends Component {
             Register
           </button>
         </div>
+      </div>
       </div>
     );
   }
