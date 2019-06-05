@@ -6,7 +6,7 @@ import "./Form.css";
 import {Link} from "react-router-dom";
 const axios = require("axios");
 
-const majors = [  
+const majors = [
   "Aerospace Studies",
   "African American Studies",
   "African Studies",
@@ -535,34 +535,31 @@ class Form extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value // rupdates the state key corresponding to the given input field
+      [name]: value // updates the state key corresponding to the given input field
     });
   }
 
-  handleSubmit = () => {
-    this.props.onUpdateForm(this.state);
-    console.log(this.state.major)
-    const formData = {"department": this.state.major};
-    const config = {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    };
+  handleSubmit(event) {
+    event.preventDefault();
+    const result = [this.state.name, this.state.major, this.state.year];
+    this.props.onUpdateForm(result);
 
-    axios.post("http://localhost:3001/api/initDeptTiles", formData, config)
-      .then((response) => {
-        console.log("response", response)
-        this.props.onLoadClass(response);
-      }).catch((error) => {
-        console.log(error);
-        //this.props.onLoadClass(sample);       ///REMOVE THIS LINE
-    });
+    const formData = {"department": this.state.major};
+
+    axios.post("http://localhost:3001/post/initDeptTiles", formData)
+            .then((response) => {
+                console.log("response", response)
+                this.props.onLoadClass(response);
+            }).catch((error) => {
+              console.log(error);
+              //this.props.onLoadClass(sample);       ///REMOVE THIS LINE
+        });
   }
 
   createMajorForm(formTitle) {
     return (
       <div className="form-group">
-        <select 
+        <select
           id={formTitle}
           name={formTitle}
           required
@@ -624,13 +621,19 @@ class Form extends Component {
           {this.createForm("year")}
 
           <input hidden type="submit" />
-          <Link
+          <button
             className="registration-button"
             type="submit"
-            to='/form'
             onClick={this.handleSubmit}
           >
             Register
+          </button>
+          <Link
+          className="registration-button"
+          type="submit"
+          to='/main'
+          >
+            go to main page
           </Link>
         </div>
       </div>

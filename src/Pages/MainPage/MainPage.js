@@ -12,20 +12,15 @@ class LandingPage extends Component {
   onPostClass = () => {
     const formData = {
       //TODO: get id and email from google oauth
-      "id": 123, 
-      "name": this.props.name, 
-      "major": this.props.major, 
+      "id": 123,
+      "name": this.props.name,
+      "major": this.props.major,
       "email": "example@gmail.com",
       "startTerm": this.props.year,
       "takenCourses": this.props.classes
       };
-    const config = {
-      headers: {
-          'content-type': 'multipart/form-data'
-      }
-    };
 
-    axios.post("http://localhost:3001/post/user", formData, config)
+    axios.post("http://localhost:3001/post/user", formData)
           .then((response) => {
             console.log("success", response);
           }).catch((error) => {
@@ -38,7 +33,7 @@ class LandingPage extends Component {
       "takenCourses": this.props.classes
       };
 
-    axios.post("http://localhost:3001/post/validMajorClasses", formData, config)
+    axios.post("http://localhost:3001/post/validMajorClasses", formData)
         .then((response) => {
           console.log("response", response)
           //TODO:
@@ -65,7 +60,7 @@ class LandingPage extends Component {
           </button>
           <div className='background'/>
           <div className='search-wrapper'>
-            <SearchBar 
+            <SearchBar
               quarter={this.props.quarters['search']}
               classes={this.props.quarters['search'].classIds.map(cid => this.props.classes[cid])}
               id='search'
@@ -77,9 +72,9 @@ class LandingPage extends Component {
               const q = this.props.quarters[qid];
               const cls = q.classIds.map(cid => this.props.classes[cid])
 
-              return <QuarterList 
-                quarter={q} 
-                classes={cls} 
+              return <QuarterList
+                quarter={q}
+                classes={cls}
                 id={qid}
                 index={index}
               />;
