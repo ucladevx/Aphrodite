@@ -10,12 +10,13 @@ const axios = require("axios");
 
 class LandingPage extends Component {
   onPostClass = () => {
+    let userDetails = JSON.parse(sessionStorage.getItem('userData'))
     const formData = {
       //TODO: get id and email from google oauth
-      "id": 123,
+      "id": userDetails["googleID"],
       "name": this.props.name,
       "major": this.props.major,
-      "email": "example@gmail.com",
+      "email": userDetails["email"],
       "startTerm": this.props.year,
       "takenCourses": this.props.classes
       };
