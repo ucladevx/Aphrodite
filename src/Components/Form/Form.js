@@ -541,19 +541,19 @@ class Form extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const result = [this.state.name, this.state.major, this.state.year];
-    this.props.onUpdateForm(result);
-
+    this.props.onUpdateForm(this.state);
+    console.log("here")
     const formData = {"department": this.state.major};
 
     axios.post("http://localhost:3001/post/initDeptTiles", formData)
             .then((response) => {
-                console.log("response", response)
-                this.props.onLoadClass(response);
+                console.log("response", response.data)
+                this.props.onLoadClass(response.data);
             }).catch((error) => {
-              console.log(error);
+              console.log("error", error);
               //this.props.onLoadClass(sample);       ///REMOVE THIS LINE
         });
+    console.log("done")
   }
 
   createMajorForm(formTitle) {
@@ -629,9 +629,9 @@ class Form extends Component {
             Register
           </button>
           <Link
-          className="registration-button"
-          type="submit"
-          to='/main'
+            className="registration-button"
+            type="submit"
+            to='/main'
           >
             go to main page
           </Link>

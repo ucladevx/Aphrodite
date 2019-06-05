@@ -8,6 +8,7 @@ const initialState = {
 const formReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.UPDATE_FORM:
+        console.log("form", state)
         return action.form;
     default:
         return state;

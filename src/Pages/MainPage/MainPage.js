@@ -71,12 +71,13 @@ class LandingPage extends Component {
             this.props.quarterOrder.map((qid, index) => {
               const q = this.props.quarters[qid];
               const cls = q.classIds.map(cid => this.props.classes[cid])
-
+              console.log(this.props.year)
               return <QuarterList
                 quarter={q}
                 classes={cls}
                 id={qid}
                 index={index}
+                year={parseInt(this.props.year, 10)}
               />;
             })}
           </div>
@@ -87,6 +88,7 @@ class LandingPage extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("STATE",state)
   return {
     classes: state.classesReducer.classes,
     quarterOrder: state.classesReducer.quarterOrder,
