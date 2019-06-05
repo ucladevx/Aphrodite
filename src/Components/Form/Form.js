@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import * as actionTypes from "../../Actions/formAction";
 import "./Form.css";
 import { Link } from "react-router-dom";
 
@@ -210,24 +212,14 @@ class Form extends Component {
     this.setState({
       [name]: value // updates the state key corresponding to the given input field
     });
-
-    console.log("state of name: " + this.state.name);
-    console.log("state of start term: " + this.state.year);
-    console.log("state of major: " + this.state.major);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    /*
-    alert(
-      "name: " +
-      this.state.name +
-      ", major: " +
-      this.state.major +
-      ", start term: " +
-      this.state.year
-    );
-    */
+    const result = [this.state.name, this.state.major, this.state.year];
+    this.props.onUpdateForm(result);
+
+    window.location = '/main';
   }
 
   createMajorForm(formTitle) {
@@ -238,6 +230,7 @@ class Form extends Component {
           name={formTitle}
           required
           className="form-control"
+          onChange={this.handleInputChange}
           >
             <option value=""></option>
             {majors.map(v =>
@@ -289,18 +282,29 @@ class Form extends Component {
           {this.createForm("year")}
 
           <input hidden type="submit" />
-          <Link
-            to='/main'
+          <button
             className="registration-button"
             type="submit"
-            //onClick={this.handleSubmit}
+            onClick={this.handleSubmit}
           >
             Register
-          </Link>
+          </button>
         </div>
       </div>
     );
   }
 }
 
-export default Form;
+const mapDispatchToProps = dispatch => {
+  return {
+    onUpdateForm: result =>
+      dispatch({
+        type: actionTypes.UPDATE_FORM,
+        form: result
+      })
+  };
+};
+
+export default connect(
+  null, mapDispatchToProps
+)(Form);

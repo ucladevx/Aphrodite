@@ -9,7 +9,7 @@ class QuarterList extends Component {
   leftLabel = (index) => {  //FOR DEMO ONLY
     let quarter;
     let year;
-    switch (index % 4) {
+    switch (index % 3) {
       case 0:
         quarter = 'F ';
         break;
