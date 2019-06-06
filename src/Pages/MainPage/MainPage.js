@@ -11,13 +11,17 @@ const axios = require("axios");
 class LandingPage extends Component {
   onPostClass = () => {
     let userDetails = JSON.parse(sessionStorage.getItem('userData'))
+    const takenCourses = {
+      "classes": this.props.classes,
+      "quarters": this.props.quarters
+      };
     let formData = {
       "id": userDetails["googleID"],
       "name": this.props.name,
       "major": this.props.major,
       "email": userDetails["email"],
       "gradYear": this.props.year,
-      "takenCourses": this.props.quarters
+      "takenCourses": takenCourses
       };
 
     axios.post("http://localhost:3001/post/user", formData)
@@ -29,14 +33,13 @@ class LandingPage extends Component {
 
     formData = {
       "department": this.props.major,
-      "takenCourses": this.props.quarters
+      "takenCourses": takenCourses
       };
 
-    console.log("Hi")
     axios.post("http://localhost:3001/post/validMajorClasses", formData)
         .then((response) => {
-          console.log("reload", response)
-          this.props.onReloadClass(response);
+          console.log("reload", response.data)
+          this.props.onReloadClass(response.data);
         }).catch((error) => {
           console.log(error);
     });

@@ -150,18 +150,21 @@ const initialState = {
 const classesReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.RELOAD_CLASS:
-      const {rec, nonrec} = action.result;
-      const allClasses = rec.concat(nonrec);
+      console.log("reload action.result", action.result);
+      let {classes, search} = action.result;
       return {
         ...state,
-        classes: allClasses,
+        classes: classes,
         quarters: {
           ...state.quarters,
-          search: allClasses
+          search: search
         }
       };
     case actionTypes.LOAD_CLASS:
-      const {classes, search} = action.result;
+      console.log(action.result)
+      classes = action.result.classes;
+      search = action.result.search;
+      console.log("c", classes, search);
       return {
         ...state,
         classes: classes,

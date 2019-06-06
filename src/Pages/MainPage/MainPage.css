@@ -23,8 +23,13 @@
 }
 
 .main-button {
-    position: absolute;
+    position: fixed;
+    right: 50px;
+    top: 50px;
     width: 100px;
     height: 100px;
+    background-color:forestgreen;
+    color: white;
+    font-size: 16px;
     z-index: 10;
 }
