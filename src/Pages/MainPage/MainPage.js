@@ -11,13 +11,13 @@ const axios = require("axios");
 class LandingPage extends Component {
   onPostClass = () => {
     let userDetails = JSON.parse(sessionStorage.getItem('userData'))
-    const formData = {
+    let formData = {
       "id": userDetails["googleID"],
       "name": this.props.name,
       "major": this.props.major,
       "email": userDetails["email"],
-      "startTerm": this.props.year,
-      "takenCourses": this.props.classes
+      "gradYear": this.props.year,
+      "takenCourses": this.props.quarters
       };
 
     axios.post("http://localhost:3001/post/user", formData)
@@ -29,14 +29,13 @@ class LandingPage extends Component {
 
     formData = {
       "department": this.props.major,
-      "takenCourses": this.props.classes
+      "takenCourses": this.props.quarters
       };
 
     axios.post("http://localhost:3001/post/validMajorClasses", formData)
         .then((response) => {
-          console.log("response", response)
-          //TODO:
-          this.props.onLoadClass(response);
+          console.log("reload", response)
+          this.props.onReloadClass(response);
         }).catch((error) => {
           console.log(error);
     });
@@ -70,7 +69,6 @@ class LandingPage extends Component {
             this.props.quarterOrder.map((qid, index) => {
               const q = this.props.quarters[qid];
               const cls = q.classIds.map(cid => this.props.classes[cid])
-              console.log(this.props.year)
               return <QuarterList
                 quarter={q}
                 classes={cls}
@@ -87,7 +85,6 @@ class LandingPage extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE",state)
   return {
     classes: state.classesReducer.classes,
     quarterOrder: state.classesReducer.quarterOrder,
@@ -104,12 +101,12 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.DROP_CLASS,
         result: result
-      }),/*
-    onUploadClass: result =>
+      }),
+    onReloadClass: result =>
       dispatch({
-        type: actionTypes.DROP_CLASS,
+        type: actionTypes.RELOAD_CLASS,
         result: result
-      })*/
+      })
   };
 };
 

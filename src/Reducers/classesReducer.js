@@ -149,8 +149,18 @@ const initialState = {
 */
 const classesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.RELOAD_CLASS:
+      const {rec, nonrec} = action.result;
+      const allClasses = rec.concat(nonrec);
+      return {
+        ...state,
+        classes: allClasses,
+        quarters: {
+          ...state.quarters,
+          search: allClasses
+        }
+      };
     case actionTypes.LOAD_CLASS:
-      console.log(state)
       const {classes, search} = action.result;
       return {
         ...state,
@@ -161,7 +171,6 @@ const classesReducer = (state = initialState, action) => {
         }
       };
     case actionTypes.DROP_CLASS:
-      console.log(state)
       const {destination, source, draggableId} = action.result;
       if (!destination){
         return state;

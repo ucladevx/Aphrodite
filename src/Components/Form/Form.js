@@ -545,18 +545,16 @@ class Form extends Component {
       event.preventDefault();
     }
     this.props.onUpdateForm(this.state);
-    console.log("here")
     const formData = {"department": this.state.major};
 
     axios.post("http://localhost:3001/post/initDeptTiles", formData)
             .then((response) => {
-                console.log("response", response.data)
-                this.props.onLoadClass(response.data);
+              //console.log("response", response.data)
+              this.props.onLoadClass(response.data);
             }).catch((error) => {
               console.log("error", error);
               //this.props.onLoadClass(sample);       ///REMOVE THIS LINE
         });
-    console.log("done")
   }
 
   createMajorForm(formTitle) {
@@ -581,10 +579,10 @@ class Form extends Component {
     );
   }
   createForm(formTitle) {
-      var val = ""
-      if(formTitle == "name") val = this.state.name
-      if(formTitle == "major") val = this.state.major
-      if(formTitle == "year") val = this.state.year
+    var val = ""
+    if(formTitle == "name") val = this.state.name
+    if(formTitle == "major") val = this.state.major
+    if(formTitle == "year") val = this.state.year
     return (
       <div className="form-group">
         <input

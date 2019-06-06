@@ -22,7 +22,6 @@ class QuarterList extends Component {
       default:
         return '';
     }
-    console.log(this.props.year)
     year = (Math.floor((index + 2)/ 3) - 4 + this.props.year).toString().substring(2, 4);
     return quarter + year;
   }
