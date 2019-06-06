@@ -11,7 +11,7 @@ const axios = require("axios");
 class LandingPage extends Component {
   onPostClass = () => {
     let userDetails = JSON.parse(sessionStorage.getItem('userData'))
-    const formData = {
+    var formData = {
       "id": userDetails["googleID"],
       "name": this.props.name,
       "major": this.props.major,
@@ -32,6 +32,7 @@ class LandingPage extends Component {
       "takenCourses": this.props.classes
       };
 
+    console.log("Hi")
     axios.post("http://localhost:3001/post/validMajorClasses", formData)
         .then((response) => {
           console.log("response", response)
