@@ -32,6 +32,7 @@ class LandingPage extends Component {
       "takenCourses": this.props.quarters
       };
 
+    console.log("Hi")
     axios.post("http://localhost:3001/post/validMajorClasses", formData)
         .then((response) => {
           console.log("reload", response)
