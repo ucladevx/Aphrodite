@@ -39,7 +39,7 @@ class ClassBubble extends Component {
     if (this.props.class.id.includes("_ML")) {
       return "#FFCC69"; //yellow
     } else {
-      return "#B875D7"; //purple
+      return '#B875D7'; //purple
     }
     /*
     switch (this.props.class.dept) {

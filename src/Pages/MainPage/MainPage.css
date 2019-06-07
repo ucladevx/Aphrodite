@@ -25,11 +25,17 @@
 .main-button {
     position: fixed;
     right: 50px;
-    top: 50px;
-    width: 100px;
-    height: 100px;
-    background-color:forestgreen;
+    top: 30px;
+    width: 120px;
+    height: 60px;
+    font-family: sans-serif;
+    background-color: royalblue;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     z-index: 10;
+    border-radius: 20px;
 }
+
+.main-button:hover {
+    background-color: rgb(89, 126, 236);
+  }

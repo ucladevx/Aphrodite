@@ -43,6 +43,7 @@
   border-bottom: 2px solid black;
   outline: none;
   padding-top: 15px;
+  background-color: rgb(217, 248, 252);
 }
 
 .form-group {

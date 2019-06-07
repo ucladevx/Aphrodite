@@ -58,7 +58,7 @@ class LandingPage extends Component {
           <button className='main-button'
             onClick={this.onPostClass}
           >
-            CLICK
+            Register
           </button>
           <div className='background'/>
           <div className='search-wrapper'>
