@@ -1,26 +1,21 @@
 import * as actionTypes from "../Actions/classesAction";
 const initialState = {
-  classes: {
-    c1_ML: { id: 'c1_ML', dept: 'AF AMER', name: 'M18' },
-    c2: { id: 'c2', dept: 'AF AMER', name: '19' },
-    c3: { id: 'c3', dept: 'AF AMER', name: '88S' },
-     c4_ML: { id: 'c4_ML', dept: 'AF AMER', name: 'M104C' },
-     c5: { id: 'c5', dept: 'AF AMER', name: 'M107' }},
+  classes: {},
   quarters: {
     'search': {
       id: 'search',
       title: "To Do",
-      classIds: ['c1_ML', 'c2']
+      classIds: []
     },
     'q1': {
       id: 'q1',
       title: "To Do",
-      classIds: ['c3', 'c4_ML']
+      classIds: []
     },
     'q2': {
       id: 'q2',
       title: "To Do",
-      classIds: ['c5']
+      classIds: []
     },
     'q3': {
       id: 'q3',
